@@ -36,19 +36,16 @@ def show_deployment_options():
     """Show deployment options"""
     print("\n📋 Choose Your Deployment Platform:")
     print("1. Vercel (Recommended - Fastest & Free)")
-    print("2. Railway (Alternative)")
-    print("3. Render (Alternative)")
-    print("4. Exit")
+    print("2. Render (Alternative)")
+    print("3. Exit")
     
-    choice = input("\nEnter your choice (1-4): ").strip()
+    choice = input("\nEnter your choice (1-3): ").strip()
     
     if choice == "1":
         deploy_vercel()
     elif choice == "2":
-        deploy_railway()
-    elif choice == "3":
         deploy_render()
-    elif choice == "4":
+    elif choice == "3":
         print("👋 Goodbye!")
         sys.exit(0)
     else:
@@ -95,32 +92,6 @@ def deploy_vercel():
     open_vercel = input("\nWould you like to open Vercel now? (y/n): ").lower()
     if open_vercel == 'y':
         webbrowser.open('https://vercel.com')
-
-def deploy_railway():
-    """Guide through Railway deployment"""
-    print("\n🚂 Railway Deployment Guide")
-    print("=" * 30)
-    
-    print("\n📋 Steps to Deploy:")
-    print("1. Go to https://railway.app")
-    print("2. Sign up with your GitHub account")
-    print("3. Click 'New Project'")
-    print("4. Select 'Deploy from GitHub repo'")
-    print("5. Choose this repository")
-    print("6. Wait for deployment to complete")
-    
-    print("\n🔧 Environment Variables to Add:")
-    print("SECRET_KEY=your-secret-key-here")
-    print("FOOD_BANK_NAME=Lewisham Food Bank")
-    print("FOOD_BANK_PHONE=020-XXXX-XXXX")
-    print("BASE_URL=https://your-app-name.railway.app")
-    
-    print("\n🌐 After deployment, your app will be available at:")
-    print("https://your-app-name.railway.app")
-    
-    open_railway = input("\nWould you like to open Railway now? (y/n): ").lower()
-    if open_railway == 'y':
-        webbrowser.open('https://railway.app')
 
 def deploy_render():
     """Guide through Render deployment"""

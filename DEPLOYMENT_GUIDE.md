@@ -41,41 +41,7 @@
 
 ---
 
-### **Option 2: Railway (Alternative)**
-
-#### **Step 1: Create Railway Account**
-1. Go to [Railway.app](https://railway.app)
-2. Sign up with GitHub account
-3. Get $5 free credit monthly
-
-#### **Step 2: Deploy Your App**
-1. **Connect GitHub Repository**:
-   - Click "New Project"
-   - Select "Deploy from GitHub repo"
-   - Choose your repository
-
-2. **Configure Environment Variables**:
-   - Go to "Variables" tab
-   - Add these variables:
-   ```
-   SECRET_KEY=your-secret-key-here
-   FOOD_BANK_NAME=Lewisham Food Bank
-   FOOD_BANK_PHONE=020-XXXX-XXXX
-   BASE_URL=https://your-app-name.railway.app
-   ```
-
-3. **Deploy**:
-   - Railway will automatically detect Python
-   - Build and deploy your app
-   - Get your public URL
-
-#### **Step 3: Get Your Public URL**
-- Your app will be available at: `https://your-app-name.railway.app`
-- Share this URL with your team
-
----
-
-### **Option 3: Render (Alternative)**
+### **Option 2: Render (Alternative)**
 
 #### **Step 1: Create Render Account**
 1. Go to [Render.com](https://render.com)
@@ -165,7 +131,6 @@ If you want real SMS:
 ## 🆘 **Need Help?**
 
 - **Vercel Docs**: https://vercel.com/docs
-- **Railway Docs**: https://docs.railway.app
 - **Render Docs**: https://render.com/docs
 
 Your Food Bank SMS System will be live and accessible from anywhere! 🎉
