@@ -2101,3 +2101,5 @@ if __name__ == '__main__':
     # Get port from environment variable (for deployment) or use 3000 for local development
     port = int(os.environ.get('PORT', 3000))
     app.run(debug=False, port=port, host='0.0.0.0')
+
+
