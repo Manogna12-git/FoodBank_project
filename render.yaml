@@ -6,6 +6,6 @@ services:
     startCommand: gunicorn foodbank_app:app --bind 0.0.0.0:$PORT
     envVars:
       - key: PYTHON_VERSION
-        value: 3.9.18
+        value: 3.13.4
       - key: FLASK_ENV
         value: production

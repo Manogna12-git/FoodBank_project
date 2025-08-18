@@ -1,0 +1,5 @@
+[33m40ac0f0[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m Fix deployment errors - Update dependencies and configuration for Render compatibility
+[33mb57504a[m Switch to Render deployment - Add render.yaml and gunicorn, remove Vercel files
+[33m2bd3d01[m Fix Vercel deployment - Simplify API handler and improve app initialization
+[33m335a3dc[m Fix Vercel deployment - Add API structure for Flask compatibility
+[33mb57d92a[m Initial commit - Food Bank SMS System with Vercel deployment
