@@ -2070,6 +2070,15 @@ def init_sample_data():
         db.session.rollback()
         print(f"❌ Error adding sample data: {e}")
 
+# Initialize database and folders when app starts
+with app.app_context():
+    try:
+        db.create_all()
+        create_upload_folder()
+        init_sample_data()
+    except Exception as e:
+        print(f"Database initialization error: {e}")
+
 if __name__ == '__main__':
     # Configure logging
     logging.basicConfig(
@@ -2080,12 +2089,6 @@ if __name__ == '__main__':
             logging.StreamHandler()
         ]
     )
-    
-    # Initialize database and folders
-    with app.app_context():
-        db.create_all()
-        create_upload_folder()
-        init_sample_data()
     
     print(f"\n🚀 {FOOD_BANK_NAME} SMS Service Starting...")
     print("📱 Dashboard: http://localhost:3000")
