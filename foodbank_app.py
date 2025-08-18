@@ -20,6 +20,10 @@ app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', secrets.token_hex(32))
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
 
+# Ensure upload folder exists
+if not os.path.exists('uploads'):
+    os.makedirs('uploads')
+
 # Initialize database
 db = SQLAlchemy(app)
 

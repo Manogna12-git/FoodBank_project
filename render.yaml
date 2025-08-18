@@ -2,10 +2,10 @@ services:
   - type: web
     name: foodbank-sms-service
     env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn foodbank_app:app
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: gunicorn foodbank_app:app --bind 0.0.0.0:$PORT
     envVars:
       - key: PYTHON_VERSION
-        value: 3.9.16
+        value: 3.9.18
       - key: FLASK_ENV
         value: production
