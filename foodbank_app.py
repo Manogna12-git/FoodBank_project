@@ -2,12 +2,19 @@ from flask import Flask, render_template_string, flash, redirect, url_for, reque
 from flask_sqlalchemy import SQLAlchemy
 import logging
 from datetime import datetime, timedelta
-from twilio.rest import Client as TwilioClient
 import os
 from dotenv import load_dotenv
 import uuid
 import secrets
 from werkzeug.utils import secure_filename
+
+# Try to import Twilio, but don't fail if it's not available
+try:
+    from twilio.rest import Client as TwilioClient
+    TWILIO_AVAILABLE = True
+except ImportError:
+    TWILIO_AVAILABLE = False
+    TwilioClient = None
 
 # Load environment variables
 load_dotenv()
@@ -70,11 +77,12 @@ TWILIO_ACCOUNT_SID = os.getenv('TWILIO_ACCOUNT_SID')
 TWILIO_AUTH_TOKEN = os.getenv('TWILIO_AUTH_TOKEN')
 TWILIO_PHONE_NUMBER = os.getenv('TWILIO_PHONE_NUMBER')
 
-# Force simulation mode by default - only use Twilio if explicitly configured
+# Force simulation mode by default - only use Twilio if explicitly configured and available
 SIMULATION_MODE = True
 
-# Check if we should use Twilio (only if all credentials are properly set)
-if (TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN and TWILIO_PHONE_NUMBER and
+# Check if we should use Twilio (only if all credentials are properly set AND Twilio is available)
+if (TWILIO_AVAILABLE and 
+    TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN and TWILIO_PHONE_NUMBER and
     TWILIO_ACCOUNT_SID.startswith('AC') and 
     len(TWILIO_AUTH_TOKEN) >= 20 and 
     TWILIO_PHONE_NUMBER.startswith('+') and
@@ -178,6 +186,9 @@ def send_sms_to_client(client, fuel_request):
         
         # Send actual SMS via Twilio
         try:
+            if not TWILIO_AVAILABLE:
+                raise Exception("Twilio not available - package not installed")
+                
             twilio_client = TwilioClient(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
             formatted_phone = format_phone_number(client.phone_number)
             
