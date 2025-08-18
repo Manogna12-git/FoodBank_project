@@ -1,0 +1,687 @@
+2025-08-17 09:12:07,633 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3000
+ * Running on http://192.168.1.231:3000
+2025-08-17 09:12:07,634 - INFO - [33mPress CTRL+C to quit[0m
+2025-08-17 09:12:07,659 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:12:08,862 - WARNING -  * Debugger is active!
+2025-08-17 09:12:08,869 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:13:53,205 - INFO -  * Detected change in 'C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\flask\\__init__.py', reloading
+2025-08-17 09:13:53,264 - INFO -  * Detected change in 'C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\flask\\app.py', reloading
+2025-08-17 09:13:53,401 - INFO -  * Detected change in 'C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\flask\\sansio\\app.py', reloading
+2025-08-17 09:13:53,663 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:13:55,671 - WARNING -  * Debugger is active!
+2025-08-17 09:13:55,674 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:13:55,736 - INFO -  * Detected change in 'C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\sqlalchemy\\orm\\interfaces.py', reloading
+2025-08-17 09:13:55,814 - INFO -  * Detected change in 'C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\sqlalchemy\\orm\\_typing.py', reloading
+2025-08-17 09:13:55,864 - INFO -  * Detected change in 'C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\sqlalchemy\\sql\\cache_key.py', reloading
+2025-08-17 09:13:55,906 - INFO -  * Detected change in 'C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\sqlalchemy\\orm\\base.py', reloading
+2025-08-17 09:13:55,949 - INFO -  * Detected change in 'C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\sqlalchemy\\orm\\state.py', reloading
+2025-08-17 09:13:56,001 - INFO -  * Detected change in 'C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\sqlalchemy\\orm\\scoping.py', reloading
+2025-08-17 09:13:56,061 - INFO -  * Detected change in 'C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\sqlalchemy\\orm\\session.py', reloading
+2025-08-17 09:13:56,136 - INFO -  * Detected change in 'C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\flask_sqlalchemy\\session.py', reloading
+2025-08-17 09:13:56,159 - INFO -  * Detected change in 'C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\flask_sqlalchemy\\table.py', reloading
+2025-08-17 09:13:56,217 - INFO -  * Detected change in 'C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\sqlalchemy\\sql\\elements.py', reloading
+2025-08-17 09:13:56,282 - INFO -  * Detected change in 'C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\sqlalchemy\\sql\\traversals.py', reloading
+2025-08-17 09:13:56,348 - INFO -  * Detected change in 'C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\sqlalchemy\\orm\\relationships.py', reloading
+2025-08-17 09:13:56,521 - INFO -  * Detected change in 'C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\twilio\\http\\__init__.py', reloading
+2025-08-17 09:13:56,540 - INFO -  * Detected change in 'C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\twilio\\credential\\credential_provider.py', reloading
+2025-08-17 09:13:56,568 - INFO -  * Detected change in 'C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\twilio\\rest\\api\\v2010\\account\\message\\__init__.py', reloading
+2025-08-17 09:13:56,603 - INFO -  * Detected change in 'C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\twilio\\base\\list_resource.py', reloading
+2025-08-17 09:13:56,632 - INFO -  * Detected change in 'C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\twilio\\base\\values.py', reloading
+2025-08-17 09:13:56,645 - INFO -  * Detected change in 'C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\twilio\\base\\instance_resource.py', reloading
+2025-08-17 09:13:56,684 - INFO -  * Detected change in 'C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\twilio\\base\\instance_context.py', reloading
+2025-08-17 09:13:56,706 - INFO -  * Detected change in 'C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\flask\\typing.py', reloading
+2025-08-17 09:13:56,904 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:13:58,866 - WARNING -  * Debugger is active!
+2025-08-17 09:13:58,869 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:14:05,320 - INFO -  * Detected change in 'C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\sqlalchemy\\orm\\context.py', reloading
+2025-08-17 09:14:05,373 - INFO -  * Detected change in 'C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\sqlalchemy\\engine\\base.py', reloading
+2025-08-17 09:14:05,435 - INFO -  * Detected change in 'C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\sqlalchemy\\engine\\default.py', reloading
+2025-08-17 09:14:05,485 - INFO - 127.0.0.1 - - [17/Aug/2025 09:14:05] "[35m[1mGET /send_sms_requests HTTP/1.1[0m" 500 -
+2025-08-17 09:14:05,790 - INFO - 127.0.0.1 - - [17/Aug/2025 09:14:05] "GET /send_sms_requests?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-08-17 09:14:05,792 - INFO - 127.0.0.1 - - [17/Aug/2025 09:14:05] "GET /send_sms_requests?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-08-17 09:14:06,337 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:14:08,985 - WARNING -  * Debugger is active!
+2025-08-17 09:14:08,989 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:14:09,096 - INFO - 127.0.0.1 - - [17/Aug/2025 09:14:09] "GET /send_sms_requests?__debugger__=yes&cmd=resource&f=console.png&s=71qNCu9sZ6ycpsWmcM2N HTTP/1.1" 200 -
+2025-08-17 09:14:09,168 - INFO - 127.0.0.1 - - [17/Aug/2025 09:14:09] "GET /send_sms_requests?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-08-17 09:29:41,684 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3000
+ * Running on http://192.168.1.231:3000
+2025-08-17 09:29:41,685 - INFO - [33mPress CTRL+C to quit[0m
+2025-08-17 09:29:41,707 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:29:42,666 - WARNING -  * Debugger is active!
+2025-08-17 09:29:42,672 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:31:40,711 - INFO - 127.0.0.1 - - [17/Aug/2025 09:31:40] "GET /send_sms_requests HTTP/1.1" 200 -
+2025-08-17 09:31:46,828 - ERROR - Error in send_sms_requests: (sqlite3.OperationalError) table fuel_request has no column named sms_sent
+[SQL: INSERT INTO fuel_request (client_id, unique_link, expires_at, status, created_at, sms_sent, sms_sent_at, sms_sid, documents_uploaded, meter_reading_filename, identity_photo_filename) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: (3, '8e34e0cb-453a-4bc5-bb79-d51b1425b2f8', '2025-08-19 08:31:46.819542', 'pending', '2025-08-17 08:31:46.825772', 0, None, None, 0, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-08-17 09:31:46,831 - INFO - 127.0.0.1 - - [17/Aug/2025 09:31:46] "[32mPOST /send_sms_requests HTTP/1.1[0m" 302 -
+2025-08-17 09:31:46,853 - INFO - 127.0.0.1 - - [17/Aug/2025 09:31:46] "GET /send_sms_requests HTTP/1.1" 200 -
+2025-08-17 09:33:08,937 - INFO - 127.0.0.1 - - [17/Aug/2025 09:33:08] "GET /send_sms_requests HTTP/1.1" 200 -
+2025-08-17 09:33:16,135 - INFO - 127.0.0.1 - - [17/Aug/2025 09:33:16] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-08-17 09:33:16,369 - INFO - 127.0.0.1 - - [17/Aug/2025 09:33:16] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-08-17 09:33:16,392 - INFO - 127.0.0.1 - - [17/Aug/2025 09:33:16] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-08-17 09:33:16,466 - INFO - 127.0.0.1 - - [17/Aug/2025 09:33:16] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=rlc95sKZVqkNw42DyKKE HTTP/1.1" 200 -
+2025-08-17 09:33:16,747 - INFO - 127.0.0.1 - - [17/Aug/2025 09:33:16] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-08-17 09:33:20,022 - INFO - 127.0.0.1 - - [17/Aug/2025 09:33:20] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-08-17 09:33:20,329 - INFO - 127.0.0.1 - - [17/Aug/2025 09:33:20] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-08-17 09:33:20,344 - INFO - 127.0.0.1 - - [17/Aug/2025 09:33:20] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-08-17 09:33:20,689 - INFO - 127.0.0.1 - - [17/Aug/2025 09:33:20] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png&s=rlc95sKZVqkNw42DyKKE HTTP/1.1[0m" 304 -
+2025-08-17 09:33:20,948 - INFO - 127.0.0.1 - - [17/Aug/2025 09:33:20] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-08-17 09:33:22,480 - INFO - 127.0.0.1 - - [17/Aug/2025 09:33:22] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-08-17 09:33:22,778 - INFO - 127.0.0.1 - - [17/Aug/2025 09:33:22] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-08-17 09:33:22,805 - INFO - 127.0.0.1 - - [17/Aug/2025 09:33:22] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-08-17 09:33:23,129 - INFO - 127.0.0.1 - - [17/Aug/2025 09:33:23] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png&s=rlc95sKZVqkNw42DyKKE HTTP/1.1[0m" 304 -
+2025-08-17 09:33:23,383 - INFO - 127.0.0.1 - - [17/Aug/2025 09:33:23] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-08-17 09:38:38,243 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3000
+ * Running on http://192.168.1.231:3000
+2025-08-17 09:38:38,244 - INFO - [33mPress CTRL+C to quit[0m
+2025-08-17 09:38:38,261 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:38:39,225 - WARNING -  * Debugger is active!
+2025-08-17 09:38:39,231 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:38:46,594 - INFO - 127.0.0.1 - - [17/Aug/2025 09:38:46] "GET / HTTP/1.1" 200 -
+2025-08-17 09:39:09,157 - INFO - 127.0.0.1 - - [17/Aug/2025 09:39:09] "[32mPOST /quick_add_client HTTP/1.1[0m" 302 -
+2025-08-17 09:39:09,178 - INFO - 127.0.0.1 - - [17/Aug/2025 09:39:09] "GET / HTTP/1.1" 200 -
+2025-08-17 09:39:17,752 - INFO - 127.0.0.1 - - [17/Aug/2025 09:39:17] "GET /send_sms_requests HTTP/1.1" 200 -
+2025-08-17 09:39:21,779 - INFO - -- BEGIN Twilio API Request --
+2025-08-17 09:39:21,780 - INFO - POST Request: https://api.twilio.com/2010-04-01/Accounts/AC2fad7137768fc75868e78/Messages.json
+2025-08-17 09:39:21,780 - INFO - Headers:
+2025-08-17 09:39:21,780 - INFO - Content-Type : application/x-www-form-urlencoded
+2025-08-17 09:39:21,781 - INFO - Accept : application/json
+2025-08-17 09:39:21,781 - INFO - User-Agent : twilio-python/9.7.0 (Windows AMD64) Python/3.13.2
+2025-08-17 09:39:21,782 - INFO - X-Twilio-Client : python-9.7.0
+2025-08-17 09:39:21,782 - INFO - Accept-Charset : utf-8
+2025-08-17 09:39:21,783 - INFO - -- END Twilio API Request --
+2025-08-17 09:39:22,614 - INFO - Response Status Code: 401
+2025-08-17 09:39:22,614 - INFO - Response Headers: {'Content-Type': 'application/json', 'Content-Length': '134', 'Connection': 'keep-alive', 'Date': 'Sun, 17 Aug 2025 08:39:22 GMT', 'X-API-Domain': 'api.twilio.com', 'X-Verification-Disclosure': 'Message Accepted. Pending content verification for US/Canada destination numbers:', 'Www-Authenticate': 'Basic realm="Twilio API"', 'Twilio-Request-Id': 'RQ43a7c23ff5049ff91048e2a8f736908b', 'X-Shenanigans': 'none', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'Accept, Authorization, Content-Type, If-Match, If-Modified-Since, If-None-Match, If-Unmodified-Since, Idempotency-Key', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS', 'Access-Control-Expose-Headers': 'ETag', 'Access-Control-Allow-Credentials': 'true', 'X-Powered-By': 'AT-5000', 'X-Home-Region': 'us1', 'X-Cache': 'Error from cloudfront', 'Via': '1.1 7a75fb682b615437ad3681fe1db7cc60.cloudfront.net (CloudFront)', 'X-Amz-Cf-Pop': 'LHR61-P4', 'X-Amz-Cf-Id': '3eZbSmXzojc6gmCXXJf18PFf636E7i3K2Touo1CBGPtIi_Pb9SQDag=='}
+2025-08-17 09:39:22,617 - ERROR - Failed to send SMS to Bob Wilson: 
+[31m[49mHTTP Error[0m [37m[49mYour request was:[0m
+
+[36m[49mPOST /Accounts/AC2fad7137768fc75868e78/Messages.json[0m
+
+[37m[49mTwilio returned the following information:[0m
+
+[34m[49mUnable to create record: Authentication Error - invalid username[0m
+
+[37m[49mMore information may be available here:[0m
+
+[34m[49mhttps://www.twilio.com/docs/errors/20003[0m
+
+
+2025-08-17 09:39:22,628 - INFO - 127.0.0.1 - - [17/Aug/2025 09:39:22] "[32mPOST /send_sms_requests HTTP/1.1[0m" 302 -
+2025-08-17 09:39:22,654 - INFO - 127.0.0.1 - - [17/Aug/2025 09:39:22] "GET /send_sms_requests HTTP/1.1" 200 -
+2025-08-17 09:39:31,978 - INFO - -- BEGIN Twilio API Request --
+2025-08-17 09:39:31,980 - INFO - POST Request: https://api.twilio.com/2010-04-01/Accounts/AC2fad7137768fc75868e78/Messages.json
+2025-08-17 09:39:31,981 - INFO - Headers:
+2025-08-17 09:39:31,982 - INFO - Content-Type : application/x-www-form-urlencoded
+2025-08-17 09:39:31,983 - INFO - Accept : application/json
+2025-08-17 09:39:31,984 - INFO - User-Agent : twilio-python/9.7.0 (Windows AMD64) Python/3.13.2
+2025-08-17 09:39:31,984 - INFO - X-Twilio-Client : python-9.7.0
+2025-08-17 09:39:31,984 - INFO - Accept-Charset : utf-8
+2025-08-17 09:39:31,985 - INFO - -- END Twilio API Request --
+2025-08-17 09:39:32,624 - INFO - Response Status Code: 401
+2025-08-17 09:39:32,624 - INFO - Response Headers: {'Content-Type': 'application/json', 'Content-Length': '134', 'Connection': 'keep-alive', 'Date': 'Sun, 17 Aug 2025 08:39:32 GMT', 'X-API-Domain': 'api.twilio.com', 'X-Verification-Disclosure': 'Message Accepted. Pending content verification for US/Canada destination numbers:', 'Www-Authenticate': 'Basic realm="Twilio API"', 'Twilio-Request-Id': 'RQe4033765608a3e2a9e60b61291423453', 'X-Shenanigans': 'none', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'Accept, Authorization, Content-Type, If-Match, If-Modified-Since, If-None-Match, If-Unmodified-Since, Idempotency-Key', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS', 'Access-Control-Expose-Headers': 'ETag', 'Access-Control-Allow-Credentials': 'true', 'X-Powered-By': 'AT-5000', 'X-Home-Region': 'us1', 'X-Cache': 'Error from cloudfront', 'Via': '1.1 d9e5cc95074e395faa3bc6e87a0bff64.cloudfront.net (CloudFront)', 'X-Amz-Cf-Pop': 'LHR61-P4', 'X-Amz-Cf-Id': 'XW7_8aGGwR9GhhdovA-KVxfcaA3Y1YE07R3W2uw5wcIFbqRU59z9-Q=='}
+2025-08-17 09:39:32,626 - ERROR - Failed to send SMS to Manogna Malla: 
+[31m[49mHTTP Error[0m [37m[49mYour request was:[0m
+
+[36m[49mPOST /Accounts/AC2fad7137768fc75868e78/Messages.json[0m
+
+[37m[49mTwilio returned the following information:[0m
+
+[34m[49mUnable to create record: Authentication Error - invalid username[0m
+
+[37m[49mMore information may be available here:[0m
+
+[34m[49mhttps://www.twilio.com/docs/errors/20003[0m
+
+
+2025-08-17 09:39:32,635 - INFO - 127.0.0.1 - - [17/Aug/2025 09:39:32] "[32mPOST /send_sms_requests HTTP/1.1[0m" 302 -
+2025-08-17 09:39:32,658 - INFO - 127.0.0.1 - - [17/Aug/2025 09:39:32] "GET /send_sms_requests HTTP/1.1" 200 -
+2025-08-17 09:44:14,405 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3000
+ * Running on http://192.168.1.231:3000
+2025-08-17 09:44:14,405 - INFO - [33mPress CTRL+C to quit[0m
+2025-08-17 09:44:14,419 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:44:15,362 - WARNING -  * Debugger is active!
+2025-08-17 09:44:15,364 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:44:29,281 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3000
+ * Running on http://192.168.1.231:3000
+2025-08-17 09:44:29,282 - INFO - [33mPress CTRL+C to quit[0m
+2025-08-17 09:44:29,299 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:44:30,240 - WARNING -  * Debugger is active!
+2025-08-17 09:44:30,242 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:44:40,886 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:44:40,887 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:44:40,889 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:44:40,890 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:44:41,384 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:44:41,628 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:44:42,332 - WARNING -  * Debugger is active!
+2025-08-17 09:44:42,334 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:44:42,470 - WARNING -  * Debugger is active!
+2025-08-17 09:44:42,473 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:44:52,367 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:44:52,367 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:44:52,368 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:44:52,368 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:44:52,632 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:44:52,749 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:44:53,981 - WARNING -  * Debugger is active!
+2025-08-17 09:44:53,984 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:44:53,996 - WARNING -  * Debugger is active!
+2025-08-17 09:44:53,998 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:45:02,742 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:45:02,743 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:45:02,743 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:45:02,743 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:45:03,167 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:45:03,203 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:45:04,223 - WARNING -  * Debugger is active!
+2025-08-17 09:45:04,226 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:45:04,274 - WARNING -  * Debugger is active!
+2025-08-17 09:45:04,275 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:45:13,107 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:45:13,109 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:45:13,111 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:45:13,407 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:45:13,485 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:45:14,469 - WARNING -  * Debugger is active!
+2025-08-17 09:45:14,472 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:45:14,503 - WARNING -  * Debugger is active!
+2025-08-17 09:45:14,505 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:45:23,385 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3000
+ * Running on http://192.168.1.231:3000
+2025-08-17 09:45:23,385 - INFO - [33mPress CTRL+C to quit[0m
+2025-08-17 09:45:23,397 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:45:24,352 - WARNING -  * Debugger is active!
+2025-08-17 09:45:24,357 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:45:33,507 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\test_sms.py', reloading
+2025-08-17 09:45:33,507 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\test_sms.py', reloading
+2025-08-17 09:45:33,728 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:45:33,728 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:45:34,711 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:45:35,393 - WARNING -  * Debugger is active!
+2025-08-17 09:45:35,396 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:45:35,430 - WARNING -  * Debugger is active!
+2025-08-17 09:45:35,432 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:45:36,149 - WARNING -  * Debugger is active!
+2025-08-17 09:45:36,156 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:45:54,931 - INFO - 127.0.0.1 - - [17/Aug/2025 09:45:54] "[35m[1mGET /debug/sms_status HTTP/1.1[0m" 500 -
+2025-08-17 09:46:09,483 - INFO - 127.0.0.1 - - [17/Aug/2025 09:46:09] "GET /send_sms_requests HTTP/1.1" 200 -
+2025-08-17 09:46:13,305 - INFO - 127.0.0.1 - - [17/Aug/2025 09:46:13] "GET / HTTP/1.1" 200 -
+2025-08-17 09:46:25,502 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:46:25,503 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:46:25,504 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:46:25,505 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:46:25,507 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:46:25,507 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:46:25,507 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:46:25,782 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:46:25,813 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:46:26,535 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:46:27,170 - WARNING -  * Debugger is active!
+2025-08-17 09:46:27,173 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:46:27,176 - WARNING -  * Debugger is active!
+2025-08-17 09:46:27,178 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:46:27,430 - WARNING -  * Debugger is active!
+2025-08-17 09:46:27,431 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:46:44,810 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:46:44,810 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:46:44,811 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:46:45,352 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:46:45,372 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:46:45,655 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:46:46,313 - WARNING -  * Debugger is active!
+2025-08-17 09:46:46,316 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:46:46,342 - WARNING -  * Debugger is active!
+2025-08-17 09:46:46,344 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:46:46,511 - WARNING -  * Debugger is active!
+2025-08-17 09:46:46,513 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:46:53,442 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:46:53,444 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:46:53,446 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:46:53,772 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:46:54,510 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:46:54,512 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:46:54,848 - WARNING -  * Debugger is active!
+2025-08-17 09:46:54,850 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:46:55,297 - WARNING -  * Debugger is active!
+2025-08-17 09:46:55,299 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:46:55,311 - WARNING -  * Debugger is active!
+2025-08-17 09:46:55,313 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:48:02,067 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3000
+ * Running on http://192.168.1.231:3000
+2025-08-17 09:48:02,068 - INFO - [33mPress CTRL+C to quit[0m
+2025-08-17 09:48:02,086 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:48:03,511 - WARNING -  * Debugger is active!
+2025-08-17 09:48:03,513 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:48:22,570 - INFO - 127.0.0.1 - - [17/Aug/2025 09:48:22] "[35m[1mGET /debug/sms_status HTTP/1.1[0m" 500 -
+2025-08-17 09:48:29,484 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3000
+ * Running on http://192.168.1.231:3000
+2025-08-17 09:48:29,484 - INFO - [33mPress CTRL+C to quit[0m
+2025-08-17 09:48:29,500 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:48:30,408 - WARNING -  * Debugger is active!
+2025-08-17 09:48:30,410 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:48:42,297 - INFO - 127.0.0.1 - - [17/Aug/2025 09:48:42] "[35m[1mGET /debug/sms_status HTTP/1.1[0m" 500 -
+2025-08-17 09:48:54,018 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:48:54,018 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:48:54,019 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:48:54,019 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:48:54,020 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:48:54,021 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:48:54,021 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:48:54,023 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:48:54,024 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:48:54,025 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:48:54,351 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:48:54,758 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:48:54,777 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:48:54,782 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:48:54,883 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:48:55,876 - WARNING -  * Debugger is active!
+2025-08-17 09:48:55,879 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:48:56,046 - WARNING -  * Debugger is active!
+2025-08-17 09:48:56,051 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:48:56,052 - WARNING -  * Debugger is active!
+2025-08-17 09:48:56,056 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:48:56,070 - WARNING -  * Debugger is active!
+2025-08-17 09:48:56,074 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:48:56,114 - WARNING -  * Debugger is active!
+2025-08-17 09:48:56,116 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:49:11,965 - INFO - 127.0.0.1 - - [17/Aug/2025 09:49:11] "GET /debug/sms_status HTTP/1.1" 200 -
+2025-08-17 09:49:17,603 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:49:17,603 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:49:17,604 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:49:17,604 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:49:17,605 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:49:17,606 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:49:17,606 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:49:17,608 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:49:18,059 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:49:18,348 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:49:18,351 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:49:18,365 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:49:18,450 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:49:19,456 - WARNING -  * Debugger is active!
+2025-08-17 09:49:19,459 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:49:19,556 - WARNING -  * Debugger is active!
+2025-08-17 09:49:19,559 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:49:19,566 - WARNING -  * Debugger is active!
+2025-08-17 09:49:19,568 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:49:19,584 - WARNING -  * Debugger is active!
+2025-08-17 09:49:19,587 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:49:19,604 - WARNING -  * Debugger is active!
+2025-08-17 09:49:19,606 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:49:31,722 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:49:31,723 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:49:31,724 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:49:31,726 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:49:31,726 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:49:31,726 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:49:31,726 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:49:32,696 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:49:32,778 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:49:32,784 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:49:32,821 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:49:32,826 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:49:33,838 - WARNING -  * Debugger is active!
+2025-08-17 09:49:33,841 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:49:33,916 - WARNING -  * Debugger is active!
+2025-08-17 09:49:33,916 - WARNING -  * Debugger is active!
+2025-08-17 09:49:33,919 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:49:33,920 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:49:33,937 - WARNING -  * Debugger is active!
+2025-08-17 09:49:33,940 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:49:33,943 - WARNING -  * Debugger is active!
+2025-08-17 09:49:33,945 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:50:25,466 - INFO - 127.0.0.1 - - [17/Aug/2025 09:50:25] "GET /debug/sms_status HTTP/1.1" 200 -
+2025-08-17 09:50:31,567 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:50:31,568 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:50:31,569 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:50:31,570 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:50:31,573 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:50:31,581 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:50:32,116 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:50:32,298 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:50:32,298 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:50:32,327 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:50:32,335 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:50:33,648 - WARNING -  * Debugger is active!
+2025-08-17 09:50:33,650 - WARNING -  * Debugger is active!
+2025-08-17 09:50:33,651 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:50:33,652 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:50:33,662 - WARNING -  * Debugger is active!
+2025-08-17 09:50:33,665 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:50:33,665 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:50:33,669 - WARNING -  * Debugger is active!
+2025-08-17 09:50:33,672 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:50:41,176 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:50:41,176 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:50:41,176 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:50:41,176 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:50:41,177 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:50:41,177 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:50:41,178 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:50:41,178 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:50:42,029 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:50:42,029 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:50:42,029 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:50:42,029 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:50:43,264 - WARNING -  * Debugger is active!
+2025-08-17 09:50:43,267 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:50:43,272 - WARNING -  * Debugger is active!
+2025-08-17 09:50:43,275 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:50:43,290 - WARNING -  * Debugger is active!
+2025-08-17 09:50:43,293 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:50:43,305 - WARNING -  * Debugger is active!
+2025-08-17 09:50:43,308 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:50:43,329 - WARNING -  * Debugger is active!
+2025-08-17 09:50:43,331 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:51:02,878 - INFO - Twilio config check: SID=AC2fad7137..., Token length=32, Phone=+447XXXXXXXXX, Configured=True
+2025-08-17 09:51:02,884 - INFO - 127.0.0.1 - - [17/Aug/2025 09:51:02] "GET /debug/sms_status HTTP/1.1" 200 -
+2025-08-17 09:51:13,660 - INFO - Twilio config check: SID=AC2fad7137..., Token length=32, Phone=+447XXXXXXXXX, Configured=True
+2025-08-17 09:51:13,663 - INFO - 127.0.0.1 - - [17/Aug/2025 09:51:13] "GET /debug/sms_status HTTP/1.1" 200 -
+2025-08-17 09:51:19,337 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:51:19,337 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:51:19,337 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:51:19,338 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:51:19,338 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:51:19,338 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:51:19,339 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:51:19,339 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:51:19,339 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:51:19,339 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:51:19,340 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:51:19,644 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:51:19,652 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:51:19,660 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:51:19,685 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:51:19,710 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:51:21,219 - WARNING -  * Debugger is active!
+2025-08-17 09:51:21,222 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:51:21,256 - WARNING -  * Debugger is active!
+2025-08-17 09:51:21,259 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:51:21,263 - WARNING -  * Debugger is active!
+2025-08-17 09:51:21,266 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:51:21,274 - WARNING -  * Debugger is active!
+2025-08-17 09:51:21,276 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:51:21,285 - WARNING -  * Debugger is active!
+2025-08-17 09:51:21,287 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:51:29,813 - INFO - Twilio config check: SID=AC2fad7137..., Token length=32, Phone=+447XXXXXXXXX, Configured=True
+2025-08-17 09:51:29,819 - INFO - 127.0.0.1 - - [17/Aug/2025 09:51:29] "GET /debug/sms_status HTTP/1.1" 200 -
+2025-08-17 09:51:39,413 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\test_sms.py', reloading
+2025-08-17 09:51:39,413 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\test_sms.py', reloading
+2025-08-17 09:51:39,413 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\test_sms.py', reloading
+2025-08-17 09:51:39,413 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\test_sms.py', reloading
+2025-08-17 09:51:39,415 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\test_sms.py', reloading
+2025-08-17 09:51:39,415 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\test_sms.py', reloading
+2025-08-17 09:51:39,415 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\test_sms.py', reloading
+2025-08-17 09:51:39,416 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\test_sms.py', reloading
+2025-08-17 09:51:39,422 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:51:39,422 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:51:39,422 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:51:39,423 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:51:39,423 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:51:39,424 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:51:39,428 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:51:39,429 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:51:39,429 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:51:39,429 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:51:39,430 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:51:39,430 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:51:39,432 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:51:40,422 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:51:40,495 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:51:40,497 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:51:40,516 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:51:40,530 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:51:41,535 - WARNING -  * Debugger is active!
+2025-08-17 09:51:41,538 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:51:41,663 - WARNING -  * Debugger is active!
+2025-08-17 09:51:41,666 - WARNING -  * Debugger is active!
+2025-08-17 09:51:41,666 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:51:41,667 - WARNING -  * Debugger is active!
+2025-08-17 09:51:41,668 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:51:41,670 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:51:41,690 - WARNING -  * Debugger is active!
+2025-08-17 09:51:41,692 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:51:46,394 - INFO - 127.0.0.1 - - [17/Aug/2025 09:51:46] "GET / HTTP/1.1" 200 -
+2025-08-17 09:51:55,267 - INFO - 127.0.0.1 - - [17/Aug/2025 09:51:55] "GET /debug/sms_simulation HTTP/1.1" 200 -
+2025-08-17 09:51:59,966 - INFO - 127.0.0.1 - - [17/Aug/2025 09:51:59] "GET / HTTP/1.1" 200 -
+2025-08-17 09:53:31,347 - INFO - 127.0.0.1 - - [17/Aug/2025 09:53:31] "GET /send_sms_requests HTTP/1.1" 200 -
+2025-08-17 09:53:35,068 - INFO - 127.0.0.1 - - [17/Aug/2025 09:53:35] "[32mPOST /send_sms_requests HTTP/1.1[0m" 302 -
+2025-08-17 09:53:35,084 - INFO - 127.0.0.1 - - [17/Aug/2025 09:53:35] "GET /send_sms_requests HTTP/1.1" 200 -
+2025-08-17 09:53:44,922 - INFO - Created SMS message for Manogna Malla with upload URL: http://localhost:3000/upload/7e31f187-3c4a-4dec-93be-5630e7753801
+2025-08-17 09:53:44,923 - INFO - SMS for Manogna Malla: SID=AC2fad7137..., Token length=32, Phone=+447XXXXXXXXX, Configured=True
+2025-08-17 09:53:45,169 - INFO - -- BEGIN Twilio API Request --
+2025-08-17 09:53:45,169 - INFO - POST Request: https://api.twilio.com/2010-04-01/Accounts/AC2fad7137768fc75868e78/Messages.json
+2025-08-17 09:53:45,169 - INFO - Headers:
+2025-08-17 09:53:45,169 - INFO - Content-Type : application/x-www-form-urlencoded
+2025-08-17 09:53:45,170 - INFO - Accept : application/json
+2025-08-17 09:53:45,170 - INFO - User-Agent : twilio-python/9.7.0 (Windows AMD64) Python/3.13.2
+2025-08-17 09:53:45,170 - INFO - X-Twilio-Client : python-9.7.0
+2025-08-17 09:53:45,171 - INFO - Accept-Charset : utf-8
+2025-08-17 09:53:45,171 - INFO - -- END Twilio API Request --
+2025-08-17 09:53:45,751 - INFO - Response Status Code: 401
+2025-08-17 09:53:45,752 - INFO - Response Headers: {'Content-Type': 'application/json', 'Content-Length': '134', 'Connection': 'keep-alive', 'Date': 'Sun, 17 Aug 2025 08:53:45 GMT', 'X-API-Domain': 'api.twilio.com', 'X-Verification-Disclosure': 'Message Accepted. Pending content verification for US/Canada destination numbers:', 'Www-Authenticate': 'Basic realm="Twilio API"', 'Twilio-Request-Id': 'RQ364f157faa4fac0d979e07cefd53191e', 'X-Shenanigans': 'none', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'Accept, Authorization, Content-Type, If-Match, If-Modified-Since, If-None-Match, If-Unmodified-Since, Idempotency-Key', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS', 'Access-Control-Expose-Headers': 'ETag', 'Access-Control-Allow-Credentials': 'true', 'X-Powered-By': 'AT-5000', 'X-Home-Region': 'us1', 'X-Cache': 'Error from cloudfront', 'Via': '1.1 050d939953f5c92a3b38475f9313802a.cloudfront.net (CloudFront)', 'X-Amz-Cf-Pop': 'LHR61-P4', 'X-Amz-Cf-Id': 'MkKvDLX21IrIf3aAGhnXBIfWtOyf1ANOa11zA10HrPGmqNfg17nsqA=='}
+2025-08-17 09:53:45,752 - ERROR - Failed to send SMS to Manogna Malla: 
+[31m[49mHTTP Error[0m [37m[49mYour request was:[0m
+
+[36m[49mPOST /Accounts/AC2fad7137768fc75868e78/Messages.json[0m
+
+[37m[49mTwilio returned the following information:[0m
+
+[34m[49mUnable to create record: Authentication Error - invalid username[0m
+
+[37m[49mMore information may be available here:[0m
+
+[34m[49mhttps://www.twilio.com/docs/errors/20003[0m
+
+
+2025-08-17 09:53:45,777 - ERROR - Failed to send SMS to Manogna Malla
+2025-08-17 09:53:45,779 - INFO - 127.0.0.1 - - [17/Aug/2025 09:53:45] "[32mPOST /send_sms_requests HTTP/1.1[0m" 302 -
+2025-08-17 09:53:45,797 - INFO - 127.0.0.1 - - [17/Aug/2025 09:53:45] "GET /send_sms_requests HTTP/1.1" 200 -
+2025-08-17 09:55:19,902 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:19,903 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:19,905 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:19,906 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:19,911 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:19,911 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:19,912 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:20,270 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:55:20,343 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:55:20,480 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:55:20,515 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:55:20,533 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:55:21,994 - WARNING -  * Debugger is active!
+2025-08-17 09:55:21,998 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:55:22,030 - WARNING -  * Debugger is active!
+2025-08-17 09:55:22,032 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:55:22,042 - WARNING -  * Debugger is active!
+2025-08-17 09:55:22,042 - WARNING -  * Debugger is active!
+2025-08-17 09:55:22,045 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:55:22,045 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:55:22,073 - WARNING -  * Debugger is active!
+2025-08-17 09:55:22,075 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:55:28,575 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:28,575 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:28,575 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:28,576 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:28,577 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:28,577 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:28,577 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:28,578 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:29,196 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:55:29,361 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:55:29,361 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:55:29,362 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:55:29,362 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:55:30,682 - WARNING -  * Debugger is active!
+2025-08-17 09:55:30,682 - WARNING -  * Debugger is active!
+2025-08-17 09:55:30,684 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:55:30,685 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:55:30,692 - WARNING -  * Debugger is active!
+2025-08-17 09:55:30,694 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:55:30,724 - WARNING -  * Debugger is active!
+2025-08-17 09:55:30,726 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:55:30,744 - WARNING -  * Debugger is active!
+2025-08-17 09:55:30,746 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:55:36,520 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:36,520 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:36,520 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:36,520 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:36,521 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:36,521 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:36,522 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:36,522 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:36,931 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:55:36,942 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:55:37,019 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:55:37,026 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:55:37,104 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:55:38,441 - WARNING -  * Debugger is active!
+2025-08-17 09:55:38,443 - WARNING -  * Debugger is active!
+2025-08-17 09:55:38,445 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:55:38,445 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:55:38,474 - WARNING -  * Debugger is active!
+2025-08-17 09:55:38,476 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:55:38,499 - WARNING -  * Debugger is active!
+2025-08-17 09:55:38,502 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:55:38,517 - WARNING -  * Debugger is active!
+2025-08-17 09:55:38,519 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:55:45,406 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:45,406 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:45,408 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:45,408 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:45,410 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:45,416 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:45,416 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:45,416 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:45,417 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:55:45,812 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:55:45,824 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:55:45,833 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:55:45,839 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:55:45,866 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:55:47,521 - WARNING -  * Debugger is active!
+2025-08-17 09:55:47,524 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:55:47,526 - WARNING -  * Debugger is active!
+2025-08-17 09:55:47,529 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:55:47,545 - WARNING -  * Debugger is active!
+2025-08-17 09:55:47,548 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:55:47,574 - WARNING -  * Debugger is active!
+2025-08-17 09:55:47,576 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:55:47,598 - WARNING -  * Debugger is active!
+2025-08-17 09:55:47,600 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:56:40,021 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3000
+ * Running on http://192.168.1.231:3000
+2025-08-17 09:56:40,022 - INFO - [33mPress CTRL+C to quit[0m
+2025-08-17 09:56:40,030 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:56:41,023 - WARNING -  * Debugger is active!
+2025-08-17 09:56:41,025 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:56:50,386 - INFO - Twilio config check: SID=AC2fad7137..., Token length=32, Phone=+447XXXXXXXXX, Configured=True
+2025-08-17 09:56:50,390 - INFO - 127.0.0.1 - - [17/Aug/2025 09:56:50] "GET /debug/sms_status HTTP/1.1" 200 -
+2025-08-17 09:56:59,340 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3000
+ * Running on http://192.168.1.231:3000
+2025-08-17 09:56:59,340 - INFO - [33mPress CTRL+C to quit[0m
+2025-08-17 09:56:59,351 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:57:00,221 - WARNING -  * Debugger is active!
+2025-08-17 09:57:00,223 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:57:08,502 - INFO - Twilio config check: SID=AC2fad7137..., Token length=32, Phone=+447XXXXXXXXX, Configured=True
+2025-08-17 09:57:08,504 - INFO - 127.0.0.1 - - [17/Aug/2025 09:57:08] "GET /debug/sms_status HTTP/1.1" 200 -
+2025-08-17 09:57:18,432 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\check_env.py', reloading
+2025-08-17 09:57:18,433 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\check_env.py', reloading
+2025-08-17 09:57:18,433 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\check_env.py', reloading
+2025-08-17 09:57:18,434 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\check_env.py', reloading
+2025-08-17 09:57:18,434 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\check_env.py', reloading
+2025-08-17 09:57:18,434 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\check_env.py', reloading
+2025-08-17 09:57:19,060 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:57:19,063 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:57:19,113 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:57:19,125 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:57:19,126 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:57:19,456 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:57:19,619 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:57:22,084 - WARNING -  * Debugger is active!
+2025-08-17 09:57:22,092 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:57:22,151 - WARNING -  * Debugger is active!
+2025-08-17 09:57:22,154 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:57:22,228 - WARNING -  * Debugger is active!
+2025-08-17 09:57:22,231 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:57:22,250 - WARNING -  * Debugger is active!
+2025-08-17 09:57:22,254 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:57:22,271 - WARNING -  * Debugger is active!
+2025-08-17 09:57:22,276 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:57:22,331 - WARNING -  * Debugger is active!
+2025-08-17 09:57:22,333 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:57:22,368 - WARNING -  * Debugger is active!
+2025-08-17 09:57:22,371 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:58:07,358 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3000
+ * Running on http://192.168.1.231:3000
+2025-08-17 09:58:07,359 - INFO - [33mPress CTRL+C to quit[0m
+2025-08-17 09:58:07,369 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:58:08,294 - WARNING -  * Debugger is active!
+2025-08-17 09:58:08,295 - INFO -  * Debugger PIN: 108-039-520
+2025-08-17 09:58:17,621 - INFO - Twilio config check: SID=AC2fad7137..., Token length=32, Phone=+447XXXXXXXXX, Configured=True
+2025-08-17 09:58:17,630 - INFO - 127.0.0.1 - - [17/Aug/2025 09:58:17] "GET /debug/sms_status HTTP/1.1" 200 -
+2025-08-17 09:58:32,851 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:58:32,852 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:58:32,853 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:58:32,864 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:58:32,865 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:58:32,865 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:58:32,866 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:58:32,867 - INFO -  * Detected change in 'D:\\foodbank-sms-service\\foodbank_app.py', reloading
+2025-08-17 09:58:33,442 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:58:33,519 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:58:33,628 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:58:33,629 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:58:33,679 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:58:33,682 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:58:33,754 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:58:33,780 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:58:46,690 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:58:46,750 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:58:46,751 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:58:46,755 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:58:46,774 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:58:46,825 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:58:46,842 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:58:46,885 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:58:59,642 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:58:59,647 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:58:59,655 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:58:59,656 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:58:59,658 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:58:59,658 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:58:59,675 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:58:59,747 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:59:08,448 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:59:08,447 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:59:08,489 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:59:08,558 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:59:08,594 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:59:08,611 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:59:08,614 - INFO -  * Restarting with watchdog (windowsapi)
+2025-08-17 09:59:08,640 - INFO -  * Restarting with watchdog (windowsapi)
