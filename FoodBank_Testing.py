@@ -1,4 +1,4 @@
-﻿from flask import Flask, render_template_string, flash, redirect, url_for, request, jsonify, abort, send_file, Response, make_response
+from flask import Flask, render_template_string, flash, redirect, url_for, request, jsonify, abort, send_file, Response
 from flask_sqlalchemy import SQLAlchemy
 import logging
 from datetime import datetime, timedelta, UTC
@@ -9,24 +9,6 @@ import secrets
 from werkzeug.utils import secure_filename
 import csv
 import io
-
-# PDF and Excel export libraries
-try:
-    from openpyxl import Workbook
-    from openpyxl.styles import Font, Alignment, PatternFill, Border, Side
-    EXCEL_AVAILABLE = True
-except ImportError:
-    EXCEL_AVAILABLE = False
-
-try:
-    from reportlab.lib import colors
-    from reportlab.lib.pagesizes import A4, landscape
-    from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
-    from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-    from reportlab.lib.units import inch
-    PDF_AVAILABLE = True
-except ImportError:
-    PDF_AVAILABLE = False
 
 # Force simulation mode - no Twilio import
 TWILIO_AVAILABLE = False
@@ -1565,7 +1547,7 @@ def export_csv():
                     'Yes' if client.gdpr_consent else 'No',
                     client.created_at.strftime('%Y-%m-%d %H:%M:%S') if client.created_at else ''
                 ])
-            filename = f'FoodbankClients_{datetime.now().strftime("%Y%m%d%H%M%S")}.csv'
+            filename = 'clients_export.csv'
             
         elif export_type == 'requests':
             # Export requests only
@@ -1590,7 +1572,7 @@ def export_csv():
                     fuel_request.submission_timestamp.strftime('%Y-%m-%d %H:%M:%S') if fuel_request.submission_timestamp else '',
                     fuel_request.expires_at.strftime('%Y-%m-%d %H:%M:%S') if fuel_request.expires_at else ''
                 ])
-            filename = f'FoodbankRequests_{datetime.now().strftime("%Y%m%d%H%M%S")}.csv'
+            filename = 'requests_export.csv'
             
         else:
             # Export all data (comprehensive)
@@ -1637,19 +1619,15 @@ def export_csv():
                         'Yes' if client.gdpr_consent else 'No',
                         '', '', '', '', '', '', '', '', '', '', ''
                     ])
-            filename = f'FoodbankData_{datetime.now().strftime("%Y%m%d%H%M%S")}.csv'
+            filename = 'complete_data_export.csv'
         
         # Prepare response
         output.seek(0)
-        csv_content = output.getvalue().encode('utf-8-sig')  # UTF-8 with BOM for Excel compatibility
-        
         response = Response(
-            csv_content,
+            output.getvalue(),
             mimetype='text/csv',
             headers={
-                'Content-Disposition': f'attachment; filename={filename}',
-                'Content-Type': 'text/csv; charset=utf-8',
-                'Cache-Control': 'no-cache'
+                'Content-Disposition': f'attachment; filename={filename}'
             }
         )
         return response
@@ -1658,339 +1636,6 @@ def export_csv():
         flash(f'Error exporting data: {str(e)}', 'danger')
         logging.error(f"CSV export error: {e}")
         return redirect(url_for('customer_data_table'))
-
-@app.route('/export_excel')
-def export_excel():
-    """Export data to Excel format"""
-    if not EXCEL_AVAILABLE:
-        flash('Excel export is not available. Please install openpyxl.', 'danger')
-        return redirect(url_for('generate_report'))
-    
-    try:
-        # Create workbook
-        wb = Workbook()
-        
-        # Style definitions
-        header_font = Font(bold=True, color="FFFFFF")
-        header_fill = PatternFill(start_color="28a745", end_color="28a745", fill_type="solid")
-        header_alignment = Alignment(horizontal="center", vertical="center")
-        thin_border = Border(
-            left=Side(style='thin'),
-            right=Side(style='thin'),
-            top=Side(style='thin'),
-            bottom=Side(style='thin')
-        )
-        
-        # Sheet 1: Clients
-        ws_clients = wb.active
-        ws_clients.title = "Clients"
-        
-        client_headers = ['Client ID', 'Name', 'Phone', 'Referrer Name', 'Referrer Email', 
-                         'Camera Phone', 'GDPR Consent', 'Created Date']
-        ws_clients.append(client_headers)
-        
-        # Style header row
-        for col_num, _ in enumerate(client_headers, 1):
-            cell = ws_clients.cell(row=1, column=col_num)
-            cell.font = header_font
-            cell.fill = header_fill
-            cell.alignment = header_alignment
-            cell.border = thin_border
-        
-        clients = Client.query.order_by(Client.created_at.desc()).all()
-        for client in clients:
-            ws_clients.append([
-                client.id,
-                client.name,
-                client.phone_number,
-                client.referrer_name or '',
-                client.referrer_email or '',
-                'Yes' if client.has_camera_phone else 'No',
-                'Yes' if client.gdpr_consent else 'No',
-                client.created_at.strftime('%Y-%m-%d %H:%M:%S') if client.created_at else ''
-            ])
-        
-        # Auto-adjust column widths
-        for column in ws_clients.columns:
-            max_length = 0
-            column_letter = column[0].column_letter
-            for cell in column:
-                try:
-                    if len(str(cell.value)) > max_length:
-                        max_length = len(str(cell.value))
-                except:
-                    pass
-            ws_clients.column_dimensions[column_letter].width = min(max_length + 2, 50)
-        
-        # Sheet 2: Requests
-        ws_requests = wb.create_sheet(title="Requests")
-        
-        request_headers = ['Request ID', 'Client Name', 'Phone', 'Status', 'Phone Type', 
-                          'Documents Uploaded', 'Meter Reading', 'ID Type', 'Postcode', 
-                          'Created Date', 'Submission Date', 'Expires Date']
-        ws_requests.append(request_headers)
-        
-        for col_num, _ in enumerate(request_headers, 1):
-            cell = ws_requests.cell(row=1, column=col_num)
-            cell.font = header_font
-            cell.fill = header_fill
-            cell.alignment = header_alignment
-            cell.border = thin_border
-        
-        fuel_requests = FuelRequest.query.join(Client).order_by(FuelRequest.created_at.desc()).all()
-        for fuel_request in fuel_requests:
-            ws_requests.append([
-                fuel_request.id,
-                fuel_request.client.name,
-                fuel_request.client.phone_number,
-                fuel_request.status,
-                fuel_request.phone_type_used or '',
-                'Yes' if fuel_request.documents_uploaded else 'No',
-                fuel_request.meter_reading_text or ('Photo' if fuel_request.meter_reading_filename else ''),
-                fuel_request.id_type or '',
-                fuel_request.client_postcode or '',
-                fuel_request.created_at.strftime('%Y-%m-%d %H:%M:%S') if fuel_request.created_at else '',
-                fuel_request.submission_timestamp.strftime('%Y-%m-%d %H:%M:%S') if fuel_request.submission_timestamp else '',
-                fuel_request.expires_at.strftime('%Y-%m-%d %H:%M:%S') if fuel_request.expires_at else ''
-            ])
-        
-        for column in ws_requests.columns:
-            max_length = 0
-            column_letter = column[0].column_letter
-            for cell in column:
-                try:
-                    if len(str(cell.value)) > max_length:
-                        max_length = len(str(cell.value))
-                except:
-                    pass
-            ws_requests.column_dimensions[column_letter].width = min(max_length + 2, 50)
-        
-        # Sheet 3: Summary
-        ws_summary = wb.create_sheet(title="Summary")
-        
-        total_clients = Client.query.count()
-        total_requests = FuelRequest.query.count()
-        completed = FuelRequest.query.filter_by(status='completed').count()
-        pending = FuelRequest.query.filter_by(status='pending').count()
-        digital_ready = Client.query.filter_by(has_camera_phone=True).count()
-        gdpr_compliant = Client.query.filter_by(gdpr_consent=True).count()
-        
-        summary_data = [
-            ['Lewisham Foodbank - Data Export Summary'],
-            ['Generated:', datetime.now().strftime('%Y-%m-%d %H:%M:%S')],
-            [''],
-            ['Metric', 'Value'],
-            ['Total Clients', total_clients],
-            ['Total Requests', total_requests],
-            ['Completed Requests', completed],
-            ['Pending Requests', pending],
-            ['Digital Ready Clients', digital_ready],
-            ['GDPR Compliant Clients', gdpr_compliant],
-            ['Completion Rate', f"{(completed/total_requests*100):.1f}%" if total_requests > 0 else "0%"],
-            ['Digital Adoption Rate', f"{(digital_ready/total_clients*100):.1f}%" if total_clients > 0 else "0%"]
-        ]
-        
-        for row in summary_data:
-            ws_summary.append(row)
-        
-        # Style summary
-        ws_summary['A1'].font = Font(bold=True, size=14)
-        ws_summary.column_dimensions['A'].width = 25
-        ws_summary.column_dimensions['B'].width = 25
-        
-        # Save to BytesIO
-        output = io.BytesIO()
-        wb.save(output)
-        output.seek(0)
-        
-        filename = f'FoodbankData_{datetime.now().strftime("%Y%m%d%H%M%S")}.xlsx'
-        
-        return send_file(
-            output,
-            mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-            as_attachment=True,
-            download_name=filename
-        )
-        
-    except Exception as e:
-        flash(f'Error exporting to Excel: {str(e)}', 'danger')
-        logging.error(f"Excel export error: {e}")
-        return redirect(url_for('generate_report'))
-
-@app.route('/export_pdf')
-def export_pdf():
-    """Export report to PDF format"""
-    if not PDF_AVAILABLE:
-        flash('PDF export is not available. Please install reportlab.', 'danger')
-        return redirect(url_for('generate_report'))
-    
-    try:
-        # Create PDF in memory
-        output = io.BytesIO()
-        doc = SimpleDocTemplate(output, pagesize=landscape(A4), 
-                               rightMargin=30, leftMargin=30, 
-                               topMargin=30, bottomMargin=30)
-        
-        elements = []
-        styles = getSampleStyleSheet()
-        
-        # Title style
-        title_style = ParagraphStyle(
-            'CustomTitle',
-            parent=styles['Heading1'],
-            fontSize=18,
-            spaceAfter=30,
-            textColor=colors.HexColor('#28a745')
-        )
-        
-        # Add title
-        elements.append(Paragraph("Lewisham Foodbank - Analytics Report", title_style))
-        elements.append(Paragraph(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}", styles['Normal']))
-        elements.append(Spacer(1, 20))
-        
-        # Summary Statistics
-        total_clients = Client.query.count()
-        total_requests = FuelRequest.query.count()
-        completed = FuelRequest.query.filter_by(status='completed').count()
-        pending = FuelRequest.query.filter_by(status='pending').count()
-        digital_ready = Client.query.filter_by(has_camera_phone=True).count()
-        gdpr_compliant = Client.query.filter_by(gdpr_consent=True).count()
-        
-        elements.append(Paragraph("Summary Statistics", styles['Heading2']))
-        elements.append(Spacer(1, 10))
-        
-        summary_data = [
-            ['Metric', 'Value', 'Metric', 'Value'],
-            ['Total Clients', str(total_clients), 'Total Requests', str(total_requests)],
-            ['Completed Requests', str(completed), 'Pending Requests', str(pending)],
-            ['Digital Ready', str(digital_ready), 'GDPR Compliant', str(gdpr_compliant)],
-            ['Completion Rate', f"{(completed/total_requests*100):.1f}%" if total_requests > 0 else "0%", 
-             'Digital Adoption', f"{(digital_ready/total_clients*100):.1f}%" if total_clients > 0 else "0%"]
-        ]
-        
-        summary_table = Table(summary_data, colWidths=[150, 100, 150, 100])
-        summary_table.setStyle(TableStyle([
-            ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#28a745')),
-            ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
-            ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
-            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-            ('FONTSIZE', (0, 0), (-1, 0), 11),
-            ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
-            ('BACKGROUND', (0, 1), (-1, -1), colors.HexColor('#f8f9fa')),
-            ('TEXTCOLOR', (0, 1), (-1, -1), colors.black),
-            ('FONTNAME', (0, 1), (-1, -1), 'Helvetica'),
-            ('FONTSIZE', (0, 1), (-1, -1), 10),
-            ('GRID', (0, 0), (-1, -1), 1, colors.HexColor('#dee2e6')),
-            ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-            ('TOPPADDING', (0, 0), (-1, -1), 8),
-            ('BOTTOMPADDING', (0, 0), (-1, -1), 8),
-        ]))
-        elements.append(summary_table)
-        elements.append(Spacer(1, 30))
-        
-        # Clients Table
-        elements.append(Paragraph("Client List", styles['Heading2']))
-        elements.append(Spacer(1, 10))
-        
-        clients = Client.query.order_by(Client.created_at.desc()).limit(20).all()
-        client_data = [['ID', 'Name', 'Phone', 'Referrer', 'Camera Phone', 'GDPR', 'Created']]
-        
-        for client in clients:
-            client_data.append([
-                str(client.id),
-                client.name[:20] + '...' if len(client.name) > 20 else client.name,
-                client.phone_number,
-                (client.referrer_name[:15] + '...' if client.referrer_name and len(client.referrer_name) > 15 else client.referrer_name) or '-',
-                'Yes' if client.has_camera_phone else 'No',
-                'Yes' if client.gdpr_consent else 'No',
-                client.created_at.strftime('%Y-%m-%d') if client.created_at else '-'
-            ])
-        
-        client_table = Table(client_data, colWidths=[40, 120, 100, 100, 70, 50, 80])
-        client_table.setStyle(TableStyle([
-            ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#28a745')),
-            ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
-            ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
-            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-            ('FONTSIZE', (0, 0), (-1, 0), 9),
-            ('BOTTOMPADDING', (0, 0), (-1, 0), 10),
-            ('BACKGROUND', (0, 1), (-1, -1), colors.white),
-            ('TEXTCOLOR', (0, 1), (-1, -1), colors.black),
-            ('FONTNAME', (0, 1), (-1, -1), 'Helvetica'),
-            ('FONTSIZE', (0, 1), (-1, -1), 8),
-            ('GRID', (0, 0), (-1, -1), 0.5, colors.HexColor('#dee2e6')),
-            ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-            ('TOPPADDING', (0, 1), (-1, -1), 5),
-            ('BOTTOMPADDING', (0, 1), (-1, -1), 5),
-            ('ROWBACKGROUNDS', (0, 1), (-1, -1), [colors.white, colors.HexColor('#f8f9fa')]),
-        ]))
-        elements.append(client_table)
-        elements.append(Spacer(1, 30))
-        
-        # Recent Requests Table
-        elements.append(Paragraph("Recent Requests", styles['Heading2']))
-        elements.append(Spacer(1, 10))
-        
-        requests = FuelRequest.query.join(Client).order_by(FuelRequest.created_at.desc()).limit(15).all()
-        request_data = [['ID', 'Client', 'Status', 'Phone Type', 'Documents', 'Created']]
-        
-        for req in requests:
-            request_data.append([
-                str(req.id),
-                req.client.name[:20] + '...' if len(req.client.name) > 20 else req.client.name,
-                req.status.capitalize(),
-                req.phone_type_used or '-',
-                'Yes' if req.documents_uploaded else 'No',
-                req.created_at.strftime('%Y-%m-%d') if req.created_at else '-'
-            ])
-        
-        request_table = Table(request_data, colWidths=[50, 150, 80, 100, 70, 80])
-        request_table.setStyle(TableStyle([
-            ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#17a2b8')),
-            ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
-            ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
-            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-            ('FONTSIZE', (0, 0), (-1, 0), 9),
-            ('BOTTOMPADDING', (0, 0), (-1, 0), 10),
-            ('BACKGROUND', (0, 1), (-1, -1), colors.white),
-            ('TEXTCOLOR', (0, 1), (-1, -1), colors.black),
-            ('FONTNAME', (0, 1), (-1, -1), 'Helvetica'),
-            ('FONTSIZE', (0, 1), (-1, -1), 8),
-            ('GRID', (0, 0), (-1, -1), 0.5, colors.HexColor('#dee2e6')),
-            ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-            ('TOPPADDING', (0, 1), (-1, -1), 5),
-            ('BOTTOMPADDING', (0, 1), (-1, -1), 5),
-            ('ROWBACKGROUNDS', (0, 1), (-1, -1), [colors.white, colors.HexColor('#f0f8ff')]),
-        ]))
-        elements.append(request_table)
-        
-        # Footer
-        elements.append(Spacer(1, 30))
-        footer_style = ParagraphStyle(
-            'Footer',
-            parent=styles['Normal'],
-            fontSize=8,
-            textColor=colors.gray
-        )
-        elements.append(Paragraph("© Lewisham Foodbank - Together with Trussell Trust", footer_style))
-        
-        # Build PDF
-        doc.build(elements)
-        output.seek(0)
-        
-        filename = f'FoodbankReport_{datetime.now().strftime("%Y%m%d%H%M%S")}.pdf'
-        
-        return send_file(
-            output,
-            mimetype='application/pdf',
-            as_attachment=True,
-            download_name=filename
-        )
-        
-    except Exception as e:
-        flash(f'Error exporting to PDF: {str(e)}', 'danger')
-        logging.error(f"PDF export error: {e}")
-        return redirect(url_for('generate_report'))
 
 @app.route('/staff_portal')
 def staff_portal():
@@ -2699,19 +2344,13 @@ def generate_report():
         <div class="main-content">
             <div class="top-bar">
                 <div>
-                    <h1 style="margin: 0; color: #333;">Analytics & Reports</h1>
+                    <h1 style="margin: 0; color: #333;">Analytics & Reports - UPDATED!</h1>
                     <p style="margin: 5px 0 0 0; color: #666;">Home / Reports</p>
                 </div>
-                <div style="display: flex; gap: 10px;">
-                    <a href="{{ url_for('export_pdf') }}" class="export-btn" style="text-decoration: none; background: #dc3545;">
-                        📄 Export PDF
-                    </a>
-                    <a href="{{ url_for('export_excel') }}" class="export-btn" style="text-decoration: none; background: #28a745;">
-                        📊 Export Excel
-                    </a>
-                    <a href="{{ url_for('export_csv') }}" class="export-btn" style="text-decoration: none; background: #17a2b8;">
-                        📋 Export CSV
-                    </a>
+                <div>
+                    <button class="export-btn" onclick="exportReport()">
+                        📊 Export Report
+                    </button>
                 </div>
             </div>
             
@@ -2909,6 +2548,10 @@ def generate_report():
                     }
                 }
             });
+
+            function exportReport() {
+                window.location.href = '{{ url_for("export_csv") }}';
+            }
         </script>
     </body>
     </html>

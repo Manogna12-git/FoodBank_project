@@ -1,4 +1,4 @@
-from flask import Flask, render_template_string, flash, redirect, url_for, request, jsonify
+from flask import Flask, render_template_string, flash, redirect, url_for, request, jsonify, abort, send_file
 from flask_sqlalchemy import SQLAlchemy
 import logging
 from datetime import datetime, timedelta, UTC
@@ -55,6 +55,8 @@ class FuelRequest(db.Model):
     documents_uploaded = db.Column(db.Boolean, default=False)
     meter_reading_filename = db.Column(db.String(200))
     identity_photo_filename = db.Column(db.String(200))
+    phone_type_used = db.Column(db.String(20))  # keypad or smartphone
+    submission_timestamp = db.Column(db.DateTime)
 
 class SMSLog(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -329,6 +331,7 @@ def index():
                 </div>
                 <div>
                     <a href="{{ url_for('generate_report') }}" class="btn">Export Report</a>
+                    <a href="{{ url_for('download_database') }}" class="btn btn-warning" style="background: #ffc107; color: #000;">📥 Download Database</a>
                 </div>
             </div>
             
@@ -425,6 +428,14 @@ def index():
                     </div>
                 </div>
                 
+                <div class="card" style="background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%); border: 2px solid #ffc107; margin-bottom: 30px;">
+                    <h3 style="color: #856404; margin-bottom: 20px;">🔧 Database Management</h3>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap; align-items: center;">
+                        <a href="{{ url_for('download_database') }}" class="btn" style="background: #ffc107; color: #000; font-weight: bold;">📥 Download Database Backup</a>
+                        <span style="color: #856404; font-size: 0.9rem;">Download your database file for migration or backup purposes</span>
+                    </div>
+                </div>
+                
                 <div class="quick-add-form">
                     <h3>Quick Add Client</h3>
                     <form method="POST" action="{{ url_for('quick_add_client') }}" style="display: flex; gap: 10px; flex-wrap: wrap; align-items: end;">
@@ -510,7 +521,7 @@ def send_sms_requests(timestamp=None):
             failed_count = 0
             
             for client_id in selected_clients:
-                client = Client.query.get(int(client_id))
+                client = db.session.get(Client, int(client_id))
                 if not client:
                     logging.error(f"Client with ID {client_id} not found")
                     failed_count += 1
@@ -526,7 +537,7 @@ def send_sms_requests(timestamp=None):
                     fuel_request = FuelRequest(
                         client_id=client.id,
                         unique_link=generate_unique_link(),
-                        expires_at=datetime.now(UTC) + timedelta(hours=48),
+                        expires_at=datetime.now() + timedelta(hours=48),
                         status='pending'
                     )
                     db.session.add(fuel_request)
@@ -956,7 +967,9 @@ def add_client():
 @app.route('/edit_client/<int:client_id>', methods=['GET', 'POST'])
 def edit_client(client_id):
     """Edit existing client information"""
-    client = Client.query.get_or_404(client_id)
+    client = db.session.get(Client, client_id)
+    if not client:
+        abort(404)
     
     if request.method == 'POST':
         try:
@@ -1069,7 +1082,9 @@ def edit_client(client_id):
 def delete_client(client_id):
     """Delete a client and all associated data"""
     try:
-        client = Client.query.get_or_404(client_id)
+        client = db.session.get(Client, client_id)
+        if not client:
+            abort(404)
         client_name = client.name
         
         # Delete all associated fuel requests and SMS logs
@@ -1180,7 +1195,7 @@ def staff_portal():
 
 @app.route('/upload/<unique_link>', methods=['GET', 'POST'])
 def upload_documents(unique_link):
-    """Client upload page for documents"""
+    """Client upload page with phone type selection and conditional forms"""
     fuel_request = FuelRequest.query.filter_by(unique_link=unique_link).first()
     
     if not fuel_request:
@@ -1211,7 +1226,7 @@ def upload_documents(unique_link):
         </html>
         """), 404
     
-    if fuel_request.expires_at < datetime.now(UTC):
+    if fuel_request.expires_at < datetime.now():
         return render_template_string("""
         <!DOCTYPE html>
         <html lang="en">
@@ -1241,44 +1256,87 @@ def upload_documents(unique_link):
     
     if request.method == 'POST':
         try:
-            if 'meter_reading' not in request.files or 'identity_photo' not in request.files:
-                flash('Please upload both meter reading and identity photo', 'danger')
-                return redirect(request.url)
+            phone_type = request.form.get('phone_type')
             
-            meter_file = request.files['meter_reading']
-            identity_file = request.files['identity_photo']
-            
-            if meter_file.filename == '' or identity_file.filename == '':
-                flash('Please select both files', 'danger')
-                return redirect(request.url)
-            
-            allowed_extensions = {'png', 'jpg', 'jpeg', 'gif'}
-            
-            def allowed_file(filename):
-                return '.' in filename and filename.rsplit('.', 1)[1].lower() in allowed_extensions
-            
-            if not (allowed_file(meter_file.filename) and allowed_file(identity_file.filename)):
-                flash('Only image files (PNG, JPG, JPEG, GIF) are allowed', 'danger')
-                return redirect(request.url)
-            
-            meter_filename = secure_filename(f"meter_{fuel_request.id}_{meter_file.filename}")
-            identity_filename = secure_filename(f"identity_{fuel_request.id}_{identity_file.filename}")
-            
-            meter_file.save(os.path.join(app.config['UPLOAD_FOLDER'], meter_filename))
-            identity_file.save(os.path.join(app.config['UPLOAD_FOLDER'], identity_filename))
-            
-            fuel_request.documents_uploaded = True
-            fuel_request.meter_reading_filename = meter_filename
-            fuel_request.identity_photo_filename = identity_filename
-            fuel_request.status = 'completed'
-            
-            db.session.commit()
-            
-            flash('Documents uploaded successfully! We will process your request soon.', 'success')
+            if phone_type == 'keypad':
+                # Handle keypad user manual entry
+                client_name = request.form.get('client_name', '').strip()
+                client_phone = request.form.get('client_phone', '').strip()
+                client_postcode = request.form.get('client_postcode', '').strip()
+                meter_reading_text = request.form.get('meter_reading_text', '').strip()
+                id_type = request.form.get('id_type', '').strip()
+                id_details = request.form.get('id_details', '').strip()
+                
+                if not all([client_name, client_phone, meter_reading_text, id_type, id_details]):
+                    flash('Please fill in all required fields', 'danger')
+                    return redirect(request.url)
+                
+                # Store keypad user data in database
+                fuel_request.documents_uploaded = True
+                fuel_request.phone_type_used = 'keypad'
+                fuel_request.submission_timestamp = datetime.now()
+                fuel_request.status = 'completed'
+                
+                # Create a text file with manual entry data
+                manual_data = f"""KEYPAD USER ENTRY
+Client Name: {client_name}
+Phone: {client_phone}
+Postcode: {client_postcode}
+Meter Reading: {meter_reading_text}
+ID Type: {id_type}
+ID Details: {id_details}
+Timestamp: {datetime.now()}
+"""
+                
+                manual_filename = f"manual_entry_{fuel_request.id}.txt"
+                with open(os.path.join(app.config['UPLOAD_FOLDER'], manual_filename), 'w') as f:
+                    f.write(manual_data)
+                
+                fuel_request.meter_reading_filename = manual_filename
+                fuel_request.identity_photo_filename = manual_filename
+                
+                db.session.commit()
+                flash('Manual entry submitted successfully! We will process your request soon.', 'success')
+                
+            elif phone_type == 'smartphone':
+                # Handle smartphone user photo upload
+                if 'meter_reading' not in request.files or 'identity_photo' not in request.files:
+                    flash('Please upload both meter reading and identity photo', 'danger')
+                    return redirect(request.url)
+                
+                meter_file = request.files['meter_reading']
+                identity_file = request.files['identity_photo']
+                
+                if meter_file.filename == '' or identity_file.filename == '':
+                    flash('Please select both files', 'danger')
+                    return redirect(request.url)
+                
+                allowed_extensions = {'png', 'jpg', 'jpeg', 'gif'}
+                
+                def allowed_file(filename):
+                    return '.' in filename and filename.rsplit('.', 1)[1].lower() in allowed_extensions
+                
+                if not (allowed_file(meter_file.filename) and allowed_file(identity_file.filename)):
+                    flash('Only image files (PNG, JPG, JPEG, GIF) are allowed', 'danger')
+                    return redirect(request.url)
+                
+                meter_filename = secure_filename(f"meter_{fuel_request.id}_{meter_file.filename}")
+                identity_filename = secure_filename(f"identity_{fuel_request.id}_{identity_file.filename}")
+                
+                meter_file.save(os.path.join(app.config['UPLOAD_FOLDER'], meter_filename))
+                identity_file.save(os.path.join(app.config['UPLOAD_FOLDER'], identity_filename))
+                
+                fuel_request.documents_uploaded = True
+                fuel_request.phone_type_used = 'smartphone'
+                fuel_request.submission_timestamp = datetime.now()
+                fuel_request.status = 'completed'
+                
+                db.session.commit()
+                flash('Photos uploaded successfully! We will process your request soon.', 'success')
             
         except Exception as e:
-            flash(f'Error uploading documents: {str(e)}', 'danger')
-            logging.error(f"Upload error: {e}")
+            flash(f'Error processing submission: {str(e)}', 'danger')
+            logging.error(f"Form processing error: {e}")
     
     return render_template_string("""
     <!DOCTYPE html>
@@ -1288,12 +1346,38 @@ def upload_documents(unique_link):
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Upload Documents - Food Bank</title>
         """ + CSS_TEMPLATE + """
+        <style>
+            .phone-selection { text-align: center; margin: 40px 0; }
+            .phone-option { 
+                display: inline-block; 
+                margin: 20px; 
+                padding: 30px; 
+                border: 3px solid #e9ecef; 
+                border-radius: 15px; 
+                cursor: pointer; 
+                transition: all 0.3s ease;
+                background: white;
+                min-width: 250px;
+            }
+            .phone-option:hover { 
+                border-color: #28a745; 
+                box-shadow: 0 8px 25px rgba(40, 167, 69, 0.2);
+                transform: translateY(-2px);
+            }
+            .phone-option.selected { 
+                border-color: #28a745; 
+                background: #e8f5e9; 
+            }
+            .phone-icon { font-size: 3rem; margin-bottom: 15px; }
+            .form-section { display: none; }
+            .form-section.active { display: block; }
+        </style>
     </head>
     <body>
         <div class="container">
             <div class="header">
-                <h1>Upload Documents</h1>
-                <p>Please upload your meter reading and identity photo</p>
+                <h1>Complete Your Fuel Support Request</h1>
+                <p>Hi {{ fuel_request.client.name }}! Please select your phone type to continue</p>
             </div>
             
             <div class="content">
@@ -1307,11 +1391,84 @@ def upload_documents(unique_link):
                     {% endif %}
                 {% endwith %}
                 
-                <div class="card">
-                    <h3>Hi {{ fuel_request.client.name }}!</h3>
-                    <p>Please upload the following documents to complete your fuel support request:</p>
+                <!-- Phone Type Selection -->
+                <div class="card" id="phoneSelection">
+                    <h3>📱 Select Your Phone Type</h3>
+                    <div class="phone-selection">
+                        <div class="phone-option" onclick="selectPhoneType('keypad')">
+                            <div class="phone-icon">📱</div>
+                            <h4>Keypad (Android)</h4>
+                            <p>Manual form entry for basic phones</p>
+                        </div>
+                        <div class="phone-option" onclick="selectPhoneType('smartphone')">
+                            <div class="phone-icon">📱</div>
+                            <h4>Smartphone (Android/iOS)</h4>
+                            <p>Upload photos for modern phones</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Keypad User Form -->
+                <div class="card form-section" id="keypadForm">
+                    <h3>📝 Manual Entry Form</h3>
+                    <p>Please enter your details manually:</p>
                     
                     <form method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="phone_type" value="keypad">
+                        
+                        <div class="form-group">
+                            <label for="client_name">Full Name *</label>
+                            <input type="text" class="form-control" id="client_name" name="client_name" value="{{ fuel_request.client.name }}" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="client_phone">Phone Number *</label>
+                            <input type="tel" class="form-control" id="client_phone" name="client_phone" value="{{ fuel_request.client.phone_number }}" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="client_postcode">Postcode (Optional)</label>
+                            <input type="text" class="form-control" id="client_postcode" name="client_postcode" placeholder="e.g., SE1 1AA">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="meter_reading_text">Meter Reading *</label>
+                            <input type="text" class="form-control" id="meter_reading_text" name="meter_reading_text" placeholder="e.g., 12345.67" required>
+                            <small class="form-text text-muted">Enter your current meter reading numbers</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="id_type">ID Type *</label>
+                            <select class="form-control" id="id_type" name="id_type" required>
+                                <option value="">Select ID type</option>
+                                <option value="photo_id">Photo ID</option>
+                                <option value="utility_bill">Utility Bill</option>
+                                <option value="dwp_letter">DWP Letter</option>
+                                <option value="council_letter">Council Letter</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="id_details">ID Details *</label>
+                            <textarea class="form-control" id="id_details" name="id_details" rows="3" placeholder="Enter details from your ID document (name, address, etc.)" required></textarea>
+                        </div>
+                        
+                        <div style="margin-top: 20px;">
+                            <button type="submit" class="btn btn-success">Submit Details</button>
+                            <button type="button" class="btn btn-secondary" onclick="goBack()">← Back to Phone Selection</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Smartphone User Form -->
+                <div class="card form-section" id="smartphoneForm">
+                    <h3>📸 Photo Upload Form</h3>
+                    <p>Please upload photos of your documents:</p>
+                    
+                    <form method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="phone_type" value="smartphone">
+                        
                         <div class="form-group">
                             <label for="meter_reading">Meter Reading Photo *</label>
                             <input type="file" class="form-control" id="meter_reading" name="meter_reading" accept="image/*" required>
@@ -1326,11 +1483,12 @@ def upload_documents(unique_link):
                         
                         <div style="margin-top: 20px;">
                             <button type="submit" class="btn btn-success">Upload Documents</button>
+                            <button type="button" class="btn btn-secondary" onclick="goBack()">← Back to Phone Selection</button>
                         </div>
                     </form>
                     
                     <div style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
-                        <h4>Instructions:</h4>
+                        <h4>📋 Instructions:</h4>
                         <ul>
                             <li>Ensure photos are clear and well-lit</li>
                             <li>Meter reading should show current numbers clearly</li>
@@ -1339,21 +1497,47 @@ def upload_documents(unique_link):
                             <li>Supported formats: PNG, JPG, JPEG, GIF</li>
                         </ul>
                     </div>
-                    
-                    <div style="margin-top: 20px; text-align: center; color: #6c757d;">
-                        <p><strong>Need help?</strong> Contact us: {{ food_bank_phone }}</p>
-                    </div>
+                </div>
+                
+                <div style="margin-top: 20px; text-align: center; color: #6c757d;">
+                    <p><strong>Need help?</strong> Contact us: {{ food_bank_phone }}</p>
                 </div>
             </div>
         </div>
+        
+        <script>
+            function selectPhoneType(type) {
+                // Hide phone selection
+                document.getElementById('phoneSelection').style.display = 'none';
+                
+                // Show appropriate form
+                if (type === 'keypad') {
+                    document.getElementById('keypadForm').classList.add('active');
+                } else if (type === 'smartphone') {
+                    document.getElementById('smartphoneForm').classList.add('active');
+                }
+            }
+            
+            function goBack() {
+                // Hide all forms
+                document.querySelectorAll('.form-section').forEach(form => {
+                    form.classList.remove('active');
+                });
+                
+                // Show phone selection
+                document.getElementById('phoneSelection').style.display = 'block';
+            }
+        </script>
     </body>
     </html>
     """, fuel_request=fuel_request, food_bank_phone=FOOD_BANK_PHONE)
 
 @app.route('/view_sms_history')
 def view_sms_history():
-    """View SMS history"""
+    """View SMS history with upload links"""
+    # Get SMS logs and fuel requests with upload links
     sms_logs = SMSLog.query.order_by(SMSLog.created_at.desc()).all()
+    fuel_requests = FuelRequest.query.filter(FuelRequest.unique_link.isnot(None)).order_by(FuelRequest.created_at.desc()).all()
     return render_template_string("""
     <!DOCTYPE html>
     <html lang="en">
@@ -1447,7 +1631,7 @@ def generate_report():
     total_requests = FuelRequest.query.count()
     completed_requests = FuelRequest.query.filter_by(status='completed').count()
     pending_requests = FuelRequest.query.filter_by(status='pending').count()
-    expired_requests = FuelRequest.query.filter(FuelRequest.expires_at < datetime.now(UTC)).count()
+    expired_requests = FuelRequest.query.filter(FuelRequest.expires_at < datetime.now()).count()
     
     # Client distribution data
     digital_ready = Client.query.filter_by(has_camera_phone=True).count()
@@ -1759,6 +1943,38 @@ def cleanup_database():
         logging.error(f"Database cleanup error: {e}")
     
     return redirect(url_for('send_sms_requests'))
+
+@app.route('/download_database')
+def download_database():
+    """Download database backup as ZIP file"""
+    try:
+        db_path = os.path.join('instance', 'foodbank.db')
+        if os.path.exists(db_path):
+            import zipfile
+            import io
+            
+            # Create ZIP file in memory
+            memory_file = io.BytesIO()
+            with zipfile.ZipFile(memory_file, 'w', zipfile.ZIP_DEFLATED) as zf:
+                zf.write(db_path, 'foodbank.db')
+            
+            memory_file.seek(0)
+            
+            from flask import Response
+            response = Response(
+                memory_file.getvalue(),
+                mimetype='application/zip',
+                headers={
+                    'Content-Disposition': 'attachment; filename=foodbank_backup.zip'
+                }
+            )
+            return response
+        else:
+            flash('Database file not found', 'danger')
+            return redirect(url_for('index'))
+    except Exception as e:
+        flash(f'Error downloading database: {str(e)}', 'danger')
+        return redirect(url_for('index'))
 
 # Initialize database and folders when app starts
 with app.app_context():

@@ -1,0 +1,392 @@
+<style>
+/* -------------------- GLOBAL RESET -------------------- */
+body, .page, .elementor, .elementor-section {
+  font-family: "Georgia", serif;
+  color: #2e2e29;
+  background-color: #fffaf0;
+  line-height: 1.4;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Limit content width */
+.site-wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 24px 80px;
+}
+
+/* Utility Fonts */
+.serif-headline {
+  font-family: "Georgia", serif;
+  font-weight: 700;
+}
+.sans-copy {
+  font-family: "Arial", sans-serif;
+  font-weight: 400;
+}
+
+/* -------------------- BUTTONS -------------------- */
+.button-primary {
+  background-color: #a45a4d;
+  color: #fff;
+  text-decoration: none;
+  display: inline-block;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-family: "Arial", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.2;
+  transition: all 0.3s ease;
+  border: none;
+}
+.button-primary:hover {
+  background-color: #8f4d41;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* -------------------- HEADER / NAV -------------------- */
+.site-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px 0;
+  margin-bottom: 48px;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.brand-and-nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+/* Brand */
+.site-brand {
+  font-family: "Georgia", serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #2e2e29;
+  flex-shrink: 0;
+}
+
+/* Nav Links */
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-left: 160px; /* moves menu to the right */
+  font-family: "Arial", sans-serif;
+  font-size: 16px;
+  color: #2e2e29;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.site-nav a {
+  color: #2e2e29;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #a45a4d;
+  transition: width 0.3s ease;
+}
+
+.site-nav a:hover {
+  color: #a45a4d;
+}
+.site-nav a:hover::after {
+  width: 100%;
+}
+
+/* CTA Button */
+.header-cta {
+  margin-left: auto;
+}
+.header-cta .button-primary {
+  font-size: 15px;
+  padding: 12px 20px;
+  border-radius: 6px;
+}
+
+/* -------------------- HERO SECTION -------------------- */
+.hero-section {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  background-color: #fbf4ec;
+  padding: 80px 80px;
+  border-radius: 12px;
+  flex-wrap: wrap;
+  gap: 24px;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease 0.3s forwards;
+}
+
+.hero-left {
+  max-width: 50%;
+  min-width: 280px;
+}
+.hero-left h1 {
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 24px;
+}
+.hero-left .hero-tagline {
+  font-size: 22px;
+  line-height: 1.4;
+  margin: 0 0 32px;
+  font-family: "Arial", sans-serif;
+}
+
+.hero-right img {
+  width: 460px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease;
+}
+.hero-right img:hover {
+  transform: scale(1.03);
+}
+
+/* -------------------- SECTION TITLES -------------------- */
+.section-block {
+  max-width: 1280px;
+  margin: 80px auto 0;
+  padding: 0 24px;
+}
+.section-heading {
+  text-align: center;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeInUp 1s ease 0.4s forwards;
+}
+.section-heading h2 {
+  font-family: "Georgia", serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: #2e2e29;
+  margin: 0 0 12px;
+}
+.section-heading p {
+  font-family: "Arial", sans-serif;
+  font-size: 18px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* -------------------- WHAT WE DO -------------------- */
+.bullet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+  font-family: "Arial", sans-serif;
+  font-size: 18px;
+  opacity: 0;
+  animation: fadeInUp 1s ease 0.6s forwards;
+}
+.bullet-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  transition: transform 0.3s ease;
+}
+.bullet-item:hover {
+  transform: translateY(-5px);
+}
+.bullet-dot {
+  min-width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #8f4d41;
+  margin-top: 8px;
+}
+.bullet-text .bullet-title {
+  font-weight: 600;
+}
+.bullet-text .bullet-desc {
+  font-weight: 400;
+}
+
+/* -------------------- WHY US -------------------- */
+.value-strip {
+  background-color: #fbf4ec;
+  border-radius: 12px;
+  padding: 48px 32px;
+  max-width: 1100px;
+  margin: 80px auto 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  opacity: 0;
+  animation: fadeInUp 1s ease 0.8s forwards;
+}
+
+/* -------------------- CONTACT CTA -------------------- */
+.final-cta {
+  background-color: #8f4d41;
+  color: #fff;
+  border-radius: 12px;
+  margin: 80px auto 0;
+  max-width: 1100px;
+  padding: 40px 32px;
+  text-align: center;
+  opacity: 0;
+  animation: fadeInUp 1s ease 1s forwards;
+}
+.final-cta .button-primary {
+  background-color: #fff;
+  color: #8f4d41;
+}
+.final-cta .button-primary:hover {
+  background-color: #f2e7e5;
+}
+
+/* -------------------- ANIMATIONS -------------------- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* -------------------- RESPONSIVE -------------------- */
+@media (max-width: 1024px) {
+  .brand-and-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .site-nav {
+    margin-left: 0;
+    gap: 20px;
+  }
+  .hero-section {
+    flex-direction: column;
+    padding: 48px 24px;
+  }
+  .hero-left {
+    max-width: 100%;
+  }
+  .hero-left h1 {
+    font-size: 40px;
+  }
+  .hero-left .hero-tagline {
+    font-size: 18px;
+  }
+  .hero-right img {
+    width: 100%;
+    margin-top: 20px;
+  }
+}
+</style>
+
+<div class="site-wrapper">
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="brand-and-nav">
+      <div class="site-brand">OT Yourself CIC</div>
+
+      <nav class="site-nav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#resources">Resources</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="header-cta">
+        <a href="#contact" class="button-primary">Book a Session</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="hero-section">
+    <div class="hero-left">
+      <h1>Making Occupational Therapy Real, Relatable, and Reachable</h1>
+      <p class="hero-tagline">Community-rooted wellbeing for everyday people.</p>
+      <a href="#contact" class="button-primary">Book a Session</a>
+    </div>
+
+    <div class="hero-right">
+      <img src="https://docklandscreative.uk/client/2026/ot-yourself-cic/wp-content/uploads/2025/11/Screenshot-2025-11-02-131857.png" alt="Hands holding supportively">
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section class="section-block" id="what-we-do">
+    <div class="section-heading">
+      <h2>What We Do</h2>
+    </div>
+
+    <div class="bullet-grid">
+      <div class="bullet-item">
+        <div class="bullet-dot"></div>
+        <div class="bullet-text">
+          <div class="bullet-title">Workshops & Resilience Training</div>
+          <div class="bullet-desc">Practical coping tools for stress, overwhelm, and burnout — for schools, parents, and teams.</div>
+        </div>
+      </div>
+
+      <div class="bullet-item">
+        <div class="bullet-dot"></div>
+        <div class="bullet-text">
+          <div class="bullet-title">Student Wellbeing & Parent Support</div>
+          <div class="bullet-desc">1:1 and group guidance to help young people regulate emotions, build confidence, and feel heard.</div>
+        </div>
+      </div>
+
+      <div class="bullet-item">
+        <div class="bullet-dot"></div>
+        <div class="bullet-text">
+          <div class="bullet-title">Tools & Resources</div>
+          <div class="bullet-desc">Downloadable worksheets, sensory strategies, and everyday OT tips designed for real life — not theory.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="value-strip" id="about">
+    <h3>Why OT Yourself CIC?</h3>
+    <p>Because support should feel like a conversation, not a diagnosis. We bring Occupational Therapy out of the clinic and into homes, schools, and community spaces where people actually live their lives.</p>
+    <p>We focus on safety, self-regulation, daily routines, and connection — not “fixing” people. We meet you where you are.</p>
+  </section>
+
+  <!-- CONTACT CTA -->
+  <section class="final-cta" id="contact">
+    <h2>Ready to talk?</h2>
+    <p>Whether you’re a parent, a school, or someone looking for support — let’s start with a conversation. No pressure. No judgement.</p>
+    <a class="button-primary" href="mailto:info@ot-yourself.example">Email Us to Book</a>
+  </section>
+</div>
