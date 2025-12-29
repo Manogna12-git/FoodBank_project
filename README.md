@@ -18,7 +18,7 @@ A comprehensive SMS-based fuel support system for food banks, designed to help c
 - **Database**: SQLite (with PostgreSQL support)
 - **SMS**: Twilio API (with simulation mode)
 - **Frontend**: HTML/CSS with Bootstrap styling
-- **Deployment**: Vercel, Railway, or Render ready
+- **Deployment**: Render ready (Free tier available)
 
 ## 📋 Requirements
 
@@ -65,7 +65,7 @@ Open your browser and go to: `http://localhost:3000`
 
 ## 🌐 Deployment
 
-### Option 1: Vercel (Recommended)
+### Deploy to Render (Recommended - Free Tier)
 
 1. **Push to GitHub**:
    ```bash
@@ -74,27 +74,16 @@ Open your browser and go to: `http://localhost:3000`
    git push origin main
    ```
 
-2. **Deploy to Vercel**:
-   - Go to [Vercel.com](https://vercel.com)
-   - Import your GitHub repository
-   - Add environment variables
-   - Deploy
-
-### Option 2: Railway
-
-1. **Connect to Railway**:
-   - Go to [Railway.app](https://railway.app)
-   - Import your GitHub repository
-   - Configure environment variables
-   - Deploy
-
-### Option 3: Render
-
-1. **Deploy to Render**:
+2. **Deploy to Render**:
    - Go to [Render.com](https://render.com)
-   - Create new Web Service
+   - Sign up with GitHub
+   - Click "New +" → "Web Service"
    - Connect your repository
-   - Configure build settings
+   - Configure:
+     - Build Command: `pip install -r requirements.txt`
+     - Start Command: `gunicorn foodbank_app:app --bind 0.0.0.0:$PORT`
+   - Select Free tier
+   - Click "Create Web Service"
 
 ## 📱 Usage
 
