@@ -1,87 +1,56 @@
 # 🚀 Food Bank SMS System - Deployment Guide
 
-## 📋 **Deployment Options**
+## 📋 **Deployment to Render (Recommended - Free Tier)**
 
-### **Option 1: Vercel (Recommended - Fastest & Free)**
-
-#### **Step 1: Prepare GitHub Repository**
-1. **Create a GitHub repository** (if you haven't already)
-2. **Push your code** to GitHub:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit - Food Bank SMS System"
-   git branch -M main
-   git remote add origin https://github.com/yourusername/foodbank-sms-service.git
-   git push -u origin main
-   ```
-
-#### **Step 2: Deploy to Vercel**
-1. **Go to [Vercel.com](https://vercel.com)**
-2. **Sign up/Login** with your GitHub account
-3. **Click "New Project"**
-4. **Import your GitHub repository**
-5. **Configure settings**:
-   - Framework Preset: Other
-   - Build Command: `pip install -r requirements.txt`
-   - Output Directory: Leave empty
-   - Install Command: Leave empty
-6. **Add Environment Variables**:
-   ```
-   SECRET_KEY=your-secret-key-here
-   FOOD_BANK_NAME=Lewisham Food Bank
-   FOOD_BANK_PHONE=020-XXXX-XXXX
-   BASE_URL=https://your-app-name.vercel.app
-   ```
-7. **Click "Deploy"**
-
-#### **Step 3: Get Your Public URL**
-- Your app will be available at: `https://your-app-name.vercel.app`
-- Vercel provides automatic HTTPS and CDN
-
----
-
-### **Option 2: Render (Alternative)**
-
-#### **Step 1: Create Render Account**
+### **Step 1: Create Render Account**
 1. Go to [Render.com](https://render.com)
-2. Sign up with GitHub account
+2. Sign up with your **GitHub account**
 
-#### **Step 2: Deploy**
-1. **New Web Service**:
-   - Connect GitHub repository
-   - Select Python environment
-   - Build Command: `pip install -r requirements.txt`
-   - Start Command: `python foodbank_app.py`
+### **Step 2: Create New Web Service**
+1. Click **"New +"** → **"Web Service"**
+2. Connect your **FoodBank_project** GitHub repository
+3. Configure settings:
+   - **Name**: `foodbank-sms-service`
+   - **Environment**: `Python 3`
+   - **Region**: Choose closest to your users
+   - **Branch**: `main`
+   - **Build Command**: `pip install -r requirements.txt`
+   - **Start Command**: `gunicorn foodbank_app:app --bind 0.0.0.0:$PORT`
 
-2. **Environment Variables**:
-   ```
-   SECRET_KEY=your-secret-key-here
-   FOOD_BANK_NAME=Lewisham Food Bank
-   FOOD_BANK_PHONE=020-XXXX-XXXX
-   BASE_URL=https://your-app-name.onrender.com
-   ```
+### **Step 3: Add Environment Variables**
+Click **"Advanced"** and add these environment variables:
+```
+SECRET_KEY=your-secret-key-here
+FOOD_BANK_NAME=Lewisham Food Bank
+FOOD_BANK_PHONE=020-XXXX-XXXX
+BASE_URL=https://your-app-name.onrender.com
+FLASK_ENV=production
+```
+
+### **Step 4: Select Free Plan**
+- Choose **"Free"** instance type
+- Click **"Create Web Service"**
+
+### **Step 5: Wait for Deployment**
+- Render will automatically build and deploy your app
+- First deployment takes 2-5 minutes
+- You'll get a public URL like: `https://foodbank-sms-service.onrender.com`
 
 ---
 
 ## 🔧 **Post-Deployment Setup**
 
-### **1. Update BASE_URL**
-After deployment, update your `.env` file with the new URL:
-```bash
-BASE_URL=https://your-app-name.vercel.app
-```
+### **1. Test Your Deployed App**
+1. Visit your public URL
+2. Test the dashboard loads correctly
+3. Test adding a client
+4. Test sending SMS (simulation mode)
+5. Test export functions (PDF, Excel, CSV)
 
-### **2. Test Your Deployed App**
-1. **Visit your public URL**
-2. **Test SMS functionality** (simulation mode)
-3. **Test upload links**
-4. **Verify all features work**
-
-### **3. Configure Twilio (Optional)**
-If you want real SMS:
-1. **Get Twilio credentials** (as per previous guide)
-2. **Add to environment variables**:
+### **2. Configure Twilio (Optional)**
+If you want real SMS functionality:
+1. Get Twilio credentials from [twilio.com](https://twilio.com)
+2. Add to Render environment variables:
    ```
    TWILIO_ACCOUNT_SID=your_account_sid
    TWILIO_AUTH_TOKEN=your_auth_token
@@ -95,42 +64,56 @@ If you want real SMS:
 ### **✅ What Works:**
 - **Public URL**: Accessible from anywhere
 - **SMS Simulation**: Test SMS functionality
-- **Photo Upload**: Real upload links
+- **Photo Upload**: Real upload links work
 - **Client Management**: Full CRUD operations
 - **Staff Portal**: Manual data entry
-- **Reports**: Generate annual reports
-- **Database**: All data stored securely
+- **Reports**: PDF, Excel, CSV exports
+- **Database**: SQLite stored on Render
 
 ### **🔗 Your Public Links:**
-- **Main Dashboard**: `https://your-app-name.vercel.app`
-- **SMS Requests**: `https://your-app-name.vercel.app/send_sms_requests`
-- **Client Management**: `https://your-app-name.vercel.app/view_clients`
-- **Staff Portal**: `https://your-app-name.vercel.app/staff_portal`
-- **Reports**: `https://your-app-name.vercel.app/generate_report`
+- **Main Dashboard**: `https://your-app-name.onrender.com`
+- **Clients**: `https://your-app-name.onrender.com/view_clients`
+- **Send SMS**: `https://your-app-name.onrender.com/send_sms_requests`
+- **Staff Portal**: `https://your-app-name.onrender.com/staff_portal`
+- **Reports**: `https://your-app-name.onrender.com/generate_report`
 
 ---
 
-## 🎯 **Next Steps**
+## ⚠️ **Important Notes**
 
-1. **Choose a deployment platform** (Vercel recommended)
-2. **Follow the deployment steps**
-3. **Get your public URL**
-4. **Test all features**
-5. **Share with your team**
+### **Free Tier Limitations:**
+- App may sleep after 15 minutes of inactivity
+- First request after sleep takes ~30 seconds
+- 750 free hours per month
+
+### **For Production Use:**
+- Consider upgrading to paid tier for always-on service
+- Add persistent disk for database backup
+- Configure custom domain if needed
+
+---
+
+## 🆘 **Troubleshooting**
+
+### **Build Fails:**
+- Check `requirements.txt` has all dependencies
+- Ensure Python version compatibility
+
+### **App Crashes:**
+- Check Render logs for errors
+- Verify environment variables are set correctly
+
+### **Database Issues:**
+- SQLite works but resets on redeploy (free tier)
+- Consider PostgreSQL for persistent data
+
+---
 
 ## 💡 **Tips**
 
-- **Vercel** is the fastest and easiest option
-- **Free tiers** are sufficient for testing
-- **Simulation mode** works perfectly for demos
-- **All features** work the same as local version
-- **Database** is automatically managed
-
----
-
-## 🆘 **Need Help?**
-
-- **Vercel Docs**: https://vercel.com/docs
-- **Render Docs**: https://render.com/docs
+- **Auto-deploy**: Render automatically deploys on GitHub push
+- **Logs**: Check Render dashboard for real-time logs
+- **Environment**: Use environment variables for secrets
+- **Testing**: Always test locally before pushing
 
 Your Food Bank SMS System will be live and accessible from anywhere! 🎉
